@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plantele Noastre</title>
+<style>
+:root {
+  --bg: #f5f7f0;
+  --card: #fff;
+  --accent: #4a7c59;
+  --accent2: #6ba368;
+  --text: #2d3436;
+  --muted: #636e72;
+  --danger: #e17055;
+  --border: #dfe6e9;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+header {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  padding: 24px 20px;
+  text-align: center;
+}
+header h1 { font-size: 1.6em; font-weight: 600; }
+header p { opacity: 0.85; margin-top: 4px; font-size: 0.95em; }
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 16px 20px;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+}
+.stat { text-align: center; }
+.stat-num { font-size: 1.4em; font-weight: 700; color: var(--accent); }
+.stat-label { font-size: 0.75em; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.filters {
+  display: flex;
+  gap: 8px;
+  padding: 12px 20px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.filter-btn {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--card);
+  font-size: 0.85em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.filter-btn.active, .filter-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  padding: 16px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s;
+}
+.card:hover { transform: translateY(-2px); }
+.card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: #e8ede5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-img img { width: 100%; height: 100%; object-fit: cover; }
+.card-img .placeholder {
+  font-size: 3em;
+  opacity: 0.3;
+}
+.card-body { padding: 14px; }
+.card-name { font-size: 1.1em; font-weight: 600; }
+.card-species { font-size: 0.85em; color: var(--muted); font-style: italic; }
+.card-location {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 2px 8px;
+  background: #e8f5e9;
+  color: var(--accent);
+  border-radius: 10px;
+  font-size: 0.75em;
+  font-weight: 500;
+}
+.card-care {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+.care-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8em;
+}
+.care-icon { font-size: 1em; }
+.care-label { color: var(--muted); }
+.care-value { font-weight: 500; }
+.water-status {
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 0.8em;
+  text-align: center;
+}
+.water-ok { background: #e8f5e9; color: var(--accent); }
+.water-soon { background: #fff3e0; color: #e67e22; }
+.water-overdue { background: #fde8e8; color: var(--danger); }
+.toxic-badge {
+  display: inline-block;
+  margin-top: 6px;
+  margin-left: 6px;
+  padding: 2px 8px;
+  background: #fde8e8;
+  color: var(--danger);
+  border-radius: 10px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.active { display: flex; }
+.modal {
+  background: var(--card);
+  border-radius: 16px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 20px;
+}
+.modal-close {
+  float: right;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: var(--muted);
+}
+.modal h2 { font-size: 1.3em; margin-bottom: 4px; }
+.modal .species { color: var(--muted); font-style: italic; margin-bottom: 12px; }
+.modal img { width: 100%; border-radius: 10px; margin-bottom: 12px; }
+.detail-section { margin-top: 14px; }
+.detail-section h3 {
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9em;
+}
+.detail-row:last-child { border: none; }
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+.action-btn {
+  flex: 1;
+  min-width: 80px;
+  padding: 10px 8px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.8em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.action-btn:active { transform: scale(0.95); }
+.btn-water { background: #e3f2fd; color: #1565c0; }
+.btn-water:hover { background: #bbdefb; }
+.btn-leaves { background: #e8f5e9; color: #2e7d32; }
+.btn-leaves:hover { background: #c8e6c9; }
+.btn-soil { background: #fff3e0; color: #e65100; }
+.btn-soil:hover { background: #ffe0b2; }
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.85em;
+  z-index: 200;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.toast.show { opacity: 1; }
+.calendar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+}
+.cal-week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  background: var(--card);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: var(--shadow);
+}
+.cal-day {
+  min-height: 80px;
+  border-radius: 8px;
+  padding: 8px;
+  background: var(--bg);
+}
+.cal-day-today {
+  background: #e8f5e9;
+  border: 2px solid var(--accent);
+}
+.cal-day-empty { opacity: 0.6; }
+.cal-day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+.cal-day-name {
+  font-size: 0.75em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.cal-day-date {
+  font-size: 0.65em;
+  color: var(--muted);
+}
+.cal-day-items {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.cal-plant {
+  font-size: 0.7em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #e3f2fd;
+  color: #1565c0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cal-plant-overdue {
+  background: #fde8e8;
+  color: #c0392b;
+  font-weight: 600;
+}
+.cal-plant-free {
+  background: transparent;
+  color: var(--muted);
+  text-align: center;
+}
+@media (max-width: 600px) {
+  .cal-week {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--muted);
+}
+.empty-state .icon { font-size: 3em; margin-bottom: 12px; }
+.empty-state p { margin-top: 8px; font-size: 0.9em; }
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; padding: 12px; gap: 12px; }
+  header { padding: 18px 16px; }
+  header h1 { font-size: 1.3em; }
+}
+</style>
+</head>
+<body>
+
+<header style="position:relative">
+  <h1>Plantele Noastre</h1>
+  <p>Casa Marinescu</p>
+  <a href="calendar.html" style="position:absolute;top:20px;right:20px;color:#fff;text-decoration:none;font-size:0.9em;background:rgba(255,255,255,0.2);padding:6px 12px;border-radius:8px">📅 Calendar</a>
+</header>
+
+<div class="stats" id="stats"></div>
+<div class="filters" id="filters"></div>
+<div class="grid" id="grid"></div>
+
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modalContent"></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+let plants = [];
+let currentFilter = null;
+const API = 'http://192.168.50.56:8080/api/plants';
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+async function plantAction(id, action) {
+  try {
+    const r = await fetch(API + '/action', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({id, action})
+    });
+    const d = await r.json();
+    if (d.ok) {
+      const labels = {water: 'Udată', fertilize_leaves: 'Fertilizare frunze', fertilize_soil: 'Fertilizare pământ'};
+      showToast(`${labels[action]} — ${d.plant}`);
+      await loadPlants();
+      if (document.getElementById('modal').classList.contains('active')) showPlant(id);
+    } else {
+      showToast('Eroare: ' + d.error);
+    }
+  } catch(e) { showToast('Nu pot contacta serverul'); }
+}
+
+async function waterAll(location) {
+  const toWater = plants.filter(p => !location || p.location === location);
+  let count = 0;
+  for (const p of toWater) {
+    try {
+      const r = await fetch(API + '/action', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({id: p.id, action: 'water'})
+      });
+      const d = await r.json();
+      if (d.ok) count++;
+    } catch(e) {}
+  }
+  showToast(`Udate ${count} plante${location ? ' din ' + location : ''}`);
+  await loadPlants();
+}
+
+async function loadPlants() {
+  try {
+    const r = await fetch('plants.json?t=' + Date.now());
+    plants = await r.json();
+  } catch(e) {
+    plants = [];
+  }
+  render(currentFilter);
+}
+
+function daysSince(dateStr) {
+  if (!dateStr) return null;
+  return Math.floor((Date.now() - new Date(dateStr).getTime()) / 86400000);
+}
+
+function waterStatus(plant) {
+  const days = daysSince(plant.last_watered);
+  if (days === null) return { cls: 'water-soon', text: 'Nu s-a udat încă' };
+  const freq = plant.care.water.frequency_days;
+  const left = freq - days;
+  if (left < 0) return { cls: 'water-overdue', text: `Trebuie udată! (${-left} zile întârziere)` };
+  if (left <= 1) return { cls: 'water-soon', text: 'Udare mâine' };
+  return { cls: 'water-ok', text: `Următoarea udare în ${left} zile` };
+}
+
+function getLocations() {
+  return [...new Set(plants.map(p => p.location))].sort();
+}
+
+function renderCalendar() {
+  const days = ['Dum','Lun','Mar','Mie','Joi','Vin','Sâm'];
+  const now = new Date();
+  now.setHours(0,0,0,0);
+
+  // Build 7-day schedule
+  const schedule = [];
+  for (let d = 0; d < 7; d++) {
+    const date = new Date(now);
+    date.setDate(date.getDate() + d);
+    schedule.push({ date, plants: [], overdue: [] });
+  }
+
+  // Place each plant on its next watering day
+  for (const p of plants) {
+    const freq = p.care.water.frequency_days;
+    const last = p.last_watered ? new Date(p.last_watered) : null;
+
+    if (!last) {
+      schedule[0].overdue.push(p.name);
+      continue;
+    }
+
+    last.setHours(0,0,0,0);
+    const daysSinceLast = Math.floor((now - last) / 86400000);
+    const daysUntilNext = freq - daysSinceLast;
+
+    if (daysUntilNext <= 0) {
+      schedule[0].overdue.push(p.name);
+    } else if (daysUntilNext < 7) {
+      schedule[daysUntilNext].plants.push(p.name);
+    }
+  }
+
+  let html = '<div class="cal-week">';
+  for (let d = 0; d < 7; d++) {
+    const s = schedule[d];
+    const dateStr = s.date.toLocaleDateString('ro-RO', {day:'numeric', month:'short'});
+    const dayName = d === 0 ? 'Azi' : d === 1 ? 'Mâine' : days[s.date.getDay()];
+    const isToday = d === 0;
+    const hasItems = s.plants.length + s.overdue.length > 0;
+
+    html += `<div class="cal-day ${isToday ? 'cal-day-today' : ''} ${!hasItems ? 'cal-day-empty' : ''}">`;
+    html += `<div class="cal-day-header"><span class="cal-day-name">${dayName}</span><span class="cal-day-date">${dateStr}</span></div>`;
+    html += `<div class="cal-day-items">`;
+
+    for (const name of s.overdue) {
+      html += `<div class="cal-plant cal-plant-overdue">💧 ${name}</div>`;
+    }
+    for (const name of s.plants) {
+      html += `<div class="cal-plant">💧 ${name}</div>`;
+    }
+    if (!hasItems) {
+      html += `<div class="cal-plant cal-plant-free">—</div>`;
+    }
+
+    html += `</div></div>`;
+  }
+  html += '</div>';
+
+  document.getElementById('calendar').innerHTML = html;
+}
+
+function render(filterLoc) {
+  currentFilter = filterLoc || null;
+  const filtered = filterLoc ? plants.filter(p => p.location === filterLoc) : plants;
+
+  document.getElementById('stats').innerHTML = `
+    <div class="stat"><div class="stat-num">${plants.length}</div><div class="stat-label">Plante</div></div>
+    <div class="stat"><div class="stat-num">${getLocations().length}</div><div class="stat-label">Camere</div></div>
+    <div class="stat"><div class="stat-num">${plants.filter(p => { const s = waterStatus(p); return s.cls === 'water-overdue'; }).length}</div><div class="stat-label">De udat</div></div>
+  `;
+
+  const locs = getLocations();
+  document.getElementById('filters').innerHTML =
+    `<button class="filter-btn ${!filterLoc ? 'active' : ''}" onclick="render()">Toate</button>` +
+    locs.map(l => `<button class="filter-btn ${filterLoc===l?'active':''}" onclick="render('${l}')">${l}</button>`).join('') +
+    `<button class="action-btn btn-water" style="margin-left:auto;padding:6px 14px;font-size:0.85em" onclick="waterAll('${filterLoc||''}')">💧 Udă toate${filterLoc ? ' din '+filterLoc : ''}</button>`;
+
+  if (filtered.length === 0) {
+    document.getElementById('grid').innerHTML = `
+      <div class="empty-state" style="grid-column:1/-1">
+        <div class="icon">🌱</div>
+        <h2>Nicio plantă încă</h2>
+        <p>Trimite o poză pe Telegram pentru a adăuga prima plantă.</p>
+      </div>`;
+    return;
+  }
+
+  document.getElementById('grid').innerHTML = filtered.map(p => {
+    const ws = waterStatus(p);
+    return `
+    <div class="card" onclick="showPlant('${p.id}')">
+      <div class="card-img">
+        ${p.photo ? `<img src="${p.photo}" alt="${p.name}" loading="lazy">` : '<div class="placeholder">🌿</div>'}
+      </div>
+      <div class="card-body">
+        <div class="card-name">${p.name}${p.care.toxic ? '<span class="toxic-badge">TOXIC</span>' : ''}</div>
+        <div class="card-species">${p.species}</div>
+        <span class="card-location">${p.location}</span>
+        <div class="card-care">
+          <div class="care-item"><span class="care-icon">💧</span><span class="care-value">La ${p.care.water.frequency_days} zile</span></div>
+          <div class="care-item"><span class="care-icon">☀️</span><span class="care-value">${p.care.light.split(' ').slice(0,2).join(' ')}</span></div>
+        </div>
+        <div class="water-status ${ws.cls}">${ws.text}</div>
+        <button class="action-btn btn-water" style="width:100%;margin-top:8px" onclick="event.stopPropagation();plantAction('${p.id}','water')">💧 Am udat</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function showPlant(id) {
+  const p = plants.find(x => x.id === id);
+  if (!p) return;
+  const ws = waterStatus(p);
+  document.getElementById('modalContent').innerHTML = `
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <h2>${p.name}${p.care.toxic ? '<span class="toxic-badge">TOXIC</span>' : ''}</h2>
+    <div class="species">${p.species}</div>
+    ${p.photo ? `<img src="${p.photo}" alt="${p.name}">` : ''}
+    <span class="card-location">${p.location}</span>
+    <div class="water-status ${ws.cls}" style="margin-top:10px">${ws.text}</div>
+    <div class="detail-section">
+      <h3>Udare</h3>
+      <div class="detail-row"><span>Frecvență</span><span>La ${p.care.water.frequency_days} zile</span></div>
+      <div class="detail-row"><span>Detalii</span><span>${p.care.water.notes}</span></div>
+      ${p.last_watered ? `<div class="detail-row"><span>Ultima udare</span><span>${p.last_watered}</span></div>` : ''}
+    </div>
+    <div class="detail-section">
+      <h3>Lumină</h3>
+      <div class="detail-row"><span>${p.care.light}</span></div>
+    </div>
+    <div class="detail-section">
+      <h3>Îngrășământ</h3>
+      <div class="detail-row"><span>Frecvență</span><span>La ${p.care.fertilizer.frequency_days} zile (${p.care.fertilizer.season})</span></div>
+      <div class="detail-row"><span>Detalii</span><span>${p.care.fertilizer.notes}</span></div>
+      ${p.last_fertilized ? `<div class="detail-row"><span>Ultimul îngrășământ</span><span>${p.last_fertilized}</span></div>` : ''}
+    </div>
+    <div class="detail-section">
+      <h3>Alte detalii</h3>
+      <div class="detail-row"><span>Umiditate</span><span>${p.care.humidity}</span></div>
+      <div class="detail-row"><span>Temperatură</span><span>${p.care.temperature}</span></div>
+      <div class="detail-row"><span>Transplantare</span><span>${p.care.repot}</span></div>
+    </div>
+    ${p.care.tips ? `<div class="detail-section"><h3>Sfaturi</h3><p style="font-size:0.9em;color:var(--muted)">${p.care.tips}</p></div>` : ''}
+    <div class="action-buttons">
+      <button class="action-btn btn-water" onclick="event.stopPropagation();plantAction('${p.id}','water')">💧 Am udat</button>
+      <button class="action-btn btn-leaves" onclick="event.stopPropagation();plantAction('${p.id}','fertilize_leaves')">🌿 Frunze</button>
+      <button class="action-btn btn-soil" onclick="event.stopPropagation();plantAction('${p.id}','fertilize_soil')">🪴 Pământ</button>
+    </div>
+    <div class="action-buttons" style="margin-top:8px">
+      <button class="action-btn" style="background:#e8eaf6;color:#283593" onclick="event.stopPropagation();editPlant('${p.id}')">✏️ Editează</button>
+      <button class="action-btn" style="background:#fde8e8;color:#c0392b" onclick="event.stopPropagation();deletePlant('${p.id}')">🗑️ Șterge</button>
+    </div>
+  `;
+  document.getElementById('modal').classList.add('active');
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('active');
+}
+
+async function deletePlant(id) {
+  const p = plants.find(x => x.id === id);
+  if (!confirm(`Ștergi "${p.name}"?`)) return;
+  try {
+    const r = await fetch(API + '/delete', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({id})
+    });
+    const d = await r.json();
+    if (d.ok) {
+      showToast(`Șters: ${d.deleted}`);
+      closeModal();
+      await loadPlants();
+    } else {
+      showToast('Eroare: ' + d.error);
+    }
+  } catch(e) { showToast('Nu pot contacta serverul'); }
+}
+
+function editPlant(id) {
+  const p = plants.find(x => x.id === id);
+  if (!p) return;
+  document.getElementById('modalContent').innerHTML = `
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <h2>Editează: ${p.name}</h2>
+    <form id="editForm" style="margin-top:12px">
+      <label style="font-size:0.8em;color:var(--muted)">Nume</label>
+      <input name="name" value="${p.name}" style="width:100%;padding:8px;border:1px solid var(--border);border-radius:6px;margin-bottom:10px;font-size:0.9em">
+      <label style="font-size:0.8em;color:var(--muted)">Specie</label>
+      <input name="species" value="${p.species}" style="width:100%;padding:8px;border:1px solid var(--border);border-radius:6px;margin-bottom:10px;font-size:0.9em">
+      <label style="font-size:0.8em;color:var(--muted)">Locație</label>
+      <input name="location" value="${p.location}" style="width:100%;padding:8px;border:1px solid var(--border);border-radius:6px;margin-bottom:10px;font-size:0.9em">
+      <label style="font-size:0.8em;color:var(--muted)">Udare (zile)</label>
+      <input name="water_days" type="number" value="${p.care.water.frequency_days}" style="width:100%;padding:8px;border:1px solid var(--border);border-radius:6px;margin-bottom:10px;font-size:0.9em">
+      <label style="font-size:0.8em;color:var(--muted)">Note udare</label>
+      <input name="water_notes" value="${p.care.water.notes}" style="width:100%;padding:8px;border:1px solid var(--border);border-radius:6px;margin-bottom:10px;font-size:0.9em">
+      <label style="font-size:0.8em;color:var(--muted)">Lumină</label>
+      <input name="light" value="${p.care.light}" style="width:100%;padding:8px;border:1px solid var(--border);border-radius:6px;margin-bottom:10px;font-size:0.9em">
+      <label style="font-size:0.8em;color:var(--muted)">Sfaturi</label>
+      <textarea name="tips" rows="2" style="width:100%;padding:8px;border:1px solid var(--border);border-radius:6px;margin-bottom:10px;font-size:0.9em">${p.care.tips||''}</textarea>
+      <button type="submit" class="action-btn btn-water" style="width:100%;padding:12px;font-size:1em">💾 Salvează</button>
+    </form>
+  `;
+  document.getElementById('editForm').onsubmit = async (e) => {
+    e.preventDefault();
+    const f = new FormData(e.target);
+    const updates = {
+      name: f.get('name'),
+      species: f.get('species'),
+      location: f.get('location'),
+      care: {
+        water: { frequency_days: parseInt(f.get('water_days')), notes: f.get('water_notes') },
+        light: f.get('light'),
+        tips: f.get('tips')
+      }
+    };
+    try {
+      const r = await fetch(API + '/update', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({id, updates})
+      });
+      const d = await r.json();
+      if (d.ok) {
+        showToast('Salvat!');
+        await loadPlants();
+        showPlant(id);
+      } else {
+        showToast('Eroare: ' + d.error);
+      }
+    } catch(e) { showToast('Nu pot contacta serverul'); }
+  };
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+loadPlants();
+</script>
+</body>
+</html>

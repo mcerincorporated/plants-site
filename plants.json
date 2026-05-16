@@ -1,0 +1,893 @@
+[
+  {
+    "id": "monstera-mare-din-living",
+    "name": "Monstera mare din Living",
+    "species": "Monstera deliciosa",
+    "location": "Living",
+    "photo": "photos/monstera-mare-din-living.jpg",
+    "added": "2026-05-15",
+    "care": {
+      "water": {
+        "frequency_days": 7,
+        "notes": "Udă când primii 2-3 cm de pământ sunt uscați. Evită excesul de apă."
+      },
+      "light": "Lumină indirectă brightă — perfectă lângă fereastră fără soare direct",
+      "fertilizer": {
+        "frequency_days": 14,
+        "season": "primăvară-vară",
+        "notes": "Îngrășământ lichid diluat la jumătate"
+      },
+      "humidity": "Preferă umiditate ridicată 60%+. Pulverizează frunzele sau pune un umidificator.",
+      "temperature": "18-27°C, fără curenți reci",
+      "repot": "La 2 ani sau când rădăcinile ies din ghiveci",
+      "toxic": true,
+      "tips": "Șterge frunzele cu o cârpă umedă pentru a elimina praful. Suport/tutore pentru creștere verticală. Toxică pentru animale și copii mici!"
+    },
+    "last_watered": "2026-05-15",
+    "last_fertilized": null
+  },
+  {
+    "id": "monstera-mic-din-living",
+    "name": "Monstera mică din Living",
+    "species": "Monstera deliciosa",
+    "location": "Living",
+    "photo": "photos/monstera-mic-din-living.jpg",
+    "added": "2026-05-15",
+    "care": {
+      "water": {
+        "frequency_days": 7,
+        "notes": "Udă când primii 2-3 cm de pământ sunt uscați. Plantă mică — mai puțină apă decât cea mare."
+      },
+      "light": "Lumină indirectă bright, ferește de soare direct",
+      "fertilizer": {
+        "frequency_days": 30,
+        "season": "primăvară-vară",
+        "notes": "Îngrășământ lichid diluat la jumătate"
+      },
+      "humidity": "50-60% ideal, pulverizează ocazional",
+      "temperature": "18-27°C, ferește de curenți reci",
+      "repot": "Când rădăcinile ies din ghiveci, de obicei la 1-2 ani",
+      "toxic": true,
+      "tips": "Ghiveci galben. Plantă tânără — frunzele vor dezvolta mai multe fenestrations cu timpul. Ține lângă cea mare pentru consistență vizuală 🌿"
+    },
+    "last_watered": null,
+    "last_fertilized": null
+  },
+  {
+    "id": "aloe-din-living",
+    "name": "Aloe din Living",
+    "species": "Aloe vera",
+    "location": "Living",
+    "photo": "photos/aloe-din-living.jpg",
+    "added": "2026-05-15",
+    "care": {
+      "water": {
+        "frequency_days": 14,
+        "notes": "Lasă pământul să se usuce complet între udări. Mai puțin e mai bine!"
+      },
+      "light": "Lumină directă sau indirectă bright — lângă fereastră",
+      "fertilizer": {
+        "frequency_days": 60,
+        "season": "primăvară-vară",
+        "notes": "Îngrășământ pentru suculente, diluat"
+      },
+      "humidity": "Tolerează aer uscat, nu are nevoie de umiditate crescută",
+      "temperature": "18-30°C, evită sub 10°C",
+      "repot": "La 2-3 ani sau când rădăcinile ies din ghiveci",
+      "toxic": false,
+      "tips": "Gelul din frunze e util pentru arsuri minore. Nu uda în exces!"
+    },
+    "last_watered": null,
+    "last_fertilized": null
+  },
+  {
+    "id": "crassula-din-living",
+    "name": "Crassula din Living",
+    "species": "Crassula ovata",
+    "location": "Living",
+    "photo": "photos/crassula-din-living.jpg",
+    "added": "2026-05-15",
+    "care": {
+      "water": {
+        "frequency_days": 14,
+        "notes": "Lasă pământul să se usuce complet între udări. Mai puțin iarna."
+      },
+      "light": "Lumină directă sau indirectă bright — iubește soarele",
+      "fertilizer": {
+        "frequency_days": 90,
+        "season": "primăvară-vară",
+        "notes": "Fertilizant pentru suculente, diluat"
+      },
+      "humidity": "Umiditate scăzută — nu pulveriza frunzele",
+      "temperature": "15-25°C",
+      "repot": "La 2-3 ani sau când rădăcinile ies din ghiveci",
+      "toxic": true,
+      "tips": "Toxică pentru animale. Frunzele cad dacă e prea multă apă. Aduce noroc în casă! 🍀"
+    },
+    "last_watered": null,
+    "last_fertilized": null
+  },
+  {
+    "id": "calathea-din-living",
+    "name": "Calathea din Living",
+    "species": "Calathea roseopicta",
+    "location": "Living",
+    "photo": "photos/calathea-din-living.jpg",
+    "added": "2026-05-15",
+    "care": {
+      "water": {
+        "frequency_days": 7,
+        "notes": "Pământ ușor umed, nu ud. Folosește apă fără clor sau lăsată la decantat."
+      },
+      "light": "Lumină indirectă, fără soare direct",
+      "fertilizer": {
+        "frequency_days": 14,
+        "season": "primăvară-vară",
+        "notes": "Fertilizant lichid diluat la jumătate"
+      },
+      "humidity": "Umiditate ridicată, pulverizează des",
+      "temperature": "18-27°C, fără curenți de aer",
+      "repot": "La 2 ani",
+      "toxic": false,
+      "tips": "Frunzele se ridică noaptea — e normal! Sensibilă la apa cu fluor."
+    },
+    "last_watered": null,
+    "last_fertilized": null
+  },
+  {
+    "id": "sansevieria-din-living",
+    "name": "Sansevieria din Living",
+    "species": "Sansevieria cylindrica",
+    "location": "Living",
+    "photo": "photos/sansevieria-din-living.jpg",
+    "added": "2026-05-15",
+    "care": {
+      "water": {
+        "frequency_days": 14,
+        "notes": "Udă rar — lasă solul să se usuce complet între udări"
+      },
+      "light": "Tolerează lumină scăzută, preferă indirectă",
+      "fertilizer": {
+        "frequency_days": 60,
+        "season": "apr-sep",
+        "notes": "Îngrășământ suculente, diluat"
+      },
+      "humidity": "Nu are pretenții, tolerează aer uscat",
+      "temperature": "15-30°C",
+      "repot": "La 2-3 ani, primăvara",
+      "toxic": true,
+      "tips": "Foarte rezistentă. Purificare aer. Nu suprauda — putrezește ușor."
+    },
+    "last_watered": null,
+    "last_fertilized": null
+  },
+  {
+    "id": "busuioc-din-bucatarie",
+    "name": "Busuioc din Bucătărie",
+    "species": "Ocimum basilicum",
+    "location": "Kitchen",
+    "photo": "photos/busuioc-din-bucatarie.jpg",
+    "added": "2026-05-15",
+    "care": {
+      "water": {
+        "frequency_days": 2,
+        "notes": "Menține solul umed constant. Nu lăsa să se usuce."
+      },
+      "light": "Soare direct 6-8 ore/zi — pe pervaz sau balcon",
+      "fertilizer": {
+        "frequency_days": 14,
+        "season": "apr-oct",
+        "notes": "Îngrășământ organic lichid"
+      },
+      "humidity": "Medie",
+      "temperature": "20-30°C, nu sub 15°C",
+      "repot": "Anuală — replantează din semințe",
+      "toxic": false,
+      "tips": "Ciupește vârfurile regulat pentru a preveni înflorirea. Recoltează de sus în jos."
+    },
+    "last_watered": null,
+    "last_fertilized": null
+  },
+  {
+    "id": "spathiphyllum-din-bucatarie",
+    "name": "Spathiphyllum din Bucătărie",
+    "species": "Spathiphyllum wallisii",
+    "location": "Kitchen",
+    "photo": "photos/spathiphyllum-din-bucatarie.jpg",
+    "added": "2026-05-15",
+    "care": {
+      "water": {
+        "frequency_days": 7,
+        "notes": "Frunzele se lasă când are nevoie de apă. Pământ ușor umed."
+      },
+      "light": "Lumină indirectă, tolerează și umbra",
+      "fertilizer": {
+        "frequency_days": 30,
+        "season": "primăvară-vară",
+        "notes": "Îngrășământ lichid diluat"
+      },
+      "humidity": "Medie-ridicată, pulverizează frunzele",
+      "temperature": "18-30°C",
+      "repot": "La 2 ani sau când rădăcinile ies din ghiveci",
+      "toxic": true,
+      "tips": "Șterge frunzele de praf periodic. Purifică aerul."
+    },
+    "last_watered": null,
+    "last_fertilized": null
+  },
+  {
+    "id": "alocasia-din-living",
+    "name": "Alocasia din Living",
+    "species": "Alocasia macrorrhiza",
+    "location": "Living",
+    "photo": "photos/alocasia-din-living.jpg",
+    "added": "2026-05-15",
+    "care": {
+      "water": {
+        "frequency_days": 7,
+        "notes": "Pământ ușor umed, nu bălti. Reduce udarea iarna."
+      },
+      "light": "Lumină indirectă puternică, fără soare direct",
+      "fertilizer": {
+        "frequency_days": 14,
+        "season": "primăvară-vară",
+        "notes": "Îngrășământ lichid diluat"
+      },
+      "humidity": "Umiditate ridicată, pulverizează des sau folosește umidificator",
+      "temperature": "18-30°C, ferită de curenți",
+      "repot": "La 1-2 ani sau când rădăcinile ies din ghiveci",
+      "toxic": true,
+      "tips": "Șterge frunzele de praf. Atenție - toxică pentru copii și animale! Fundiță verde decorativă la tulpină."
+    },
+    "last_watered": null,
+    "last_fertilized": null
+  },
+  {
+    "id": "pothos-din-bucatarie",
+    "name": "Pothos din Bucătărie",
+    "species": "Epipremnum aureum",
+    "location": "Kitchen",
+    "photo": "photos/pothos-din-bucatarie.jpg",
+    "added": "2026-05-15",
+    "care": {
+      "water": {
+        "frequency_days": 7,
+        "notes": "Udă când solul e uscat la atingere"
+      },
+      "light": "Lumină indirectă medie-puternică",
+      "fertilizer": {
+        "frequency_days": 30,
+        "season": "apr-sep",
+        "notes": "Îngrășământ lichid universal diluat"
+      },
+      "humidity": "Tolerantă, apreciază umiditate medie",
+      "temperature": "18-30°C",
+      "repot": "La 1-2 ani",
+      "toxic": true,
+      "tips": "Creștere rapidă, ideală pentru agățat. Taie și pune în apă pentru propagare."
+    },
+    "last_watered": null,
+    "last_fertilized": null
+  },
+  {
+    "id": "ficus-tineke-din-dormitor",
+    "name": "Ficus Tineke din Dormitor",
+    "species": "Ficus elastica 'Tineke'",
+    "location": "Bedroom",
+    "photo": "photos/ficus-tineke-din-dormitor.jpg",
+    "added": "2026-05-15",
+    "care": {
+      "water": {
+        "frequency_days": 10,
+        "notes": "Lasă pământul să se usuce între udări. Nu uda excesiv — rădăcinile putrezesc ușor."
+      },
+      "light": "Lumină indirectă puternică — variegația se pierde fără suficientă lumină!",
+      "fertilizer": {
+        "frequency_days": 30,
+        "season": "primăvară-vară",
+        "notes": "Îngrășământ diluat lunar în sezon de creștere."
+      },
+      "humidity": "Medie — șterge frunzele de praf cu o lavetă umedă",
+      "temperature": "16-24°C. NU pe calorifer!",
+      "repot": "La 2 ani sau când rădăcinile ies din ghiveci",
+      "toxic": true,
+      "tips": "Taie cu mănuși — seva albă iritantă! Nu muta des — se adaptează greu la lumină nouă."
+    },
+    "last_watered": "2026-05-16",
+    "last_fertilized": null
+  },
+  {
+    "id": "oxalis-verde-din-dormitor",
+    "name": "Oxalis verde din Dormitor",
+    "species": "Oxalis triangularis (green variety)",
+    "location": "Bedroom",
+    "photo": "photos/oxalis-verde-din-dormitor.jpg",
+    "added": "2026-05-15",
+    "care": {
+      "water": {
+        "frequency_days": 7,
+        "notes": "Pământ ușor umed, nu lăsa să se usuce complet"
+      },
+      "light": "Lumină indirectă puternică — tulpini lungi = vrea mai multă lumină!",
+      "fertilizer": {
+        "frequency_days": 30,
+        "season": "primăvară-vară",
+        "notes": "Îngrășământ lichid diluat"
+      },
+      "humidity": "Medie",
+      "temperature": "16-24°C",
+      "repot": "La 2 ani sau când rădăcinile ies din ghiveci",
+      "toxic": false,
+      "tips": "Dacă intră în repaus, oprește udarea 4-6 săptămâni apoi reia. Mută mai aproape de fereastră!"
+    },
+    "last_watered": "2026-05-16",
+    "last_fertilized": null
+  },
+  {
+    "id": "orhidee-2-din-dormitor",
+    "name": "Orhidee 2 din Dormitor",
+    "species": "Phalaenopsis sp.",
+    "location": "Bedroom",
+    "photo": "photos/orhidee-2-din-dormitor.jpg",
+    "added": "2026-05-15",
+    "care": {
+      "water": {
+        "frequency_days": 7,
+        "notes": "Scufundare 10 min în apă, are sistem auto-udare roz"
+      },
+      "light": "Lumină indirectă, fără soare direct",
+      "fertilizer": {
+        "frequency_days": 14,
+        "season": "primăvară-vară",
+        "notes": "Fertilizant lichid pentru orhidee, diluat la jumătate"
+      },
+      "humidity": "Umiditate ridicată, evită caloriferul",
+      "temperature": "18-25°C, evită curenți",
+      "repot": "La 2 ani, în scoarță de pin, ghiveci transparent",
+      "toxic": false,
+      "tips": "Nu tăia tulpina florală până nu se usucă complet — poate reflori! Ghiveci cu sistem auto-udare roz."
+    },
+    "last_watered": "2026-05-16",
+    "last_fertilized": null
+  },
+  {
+    "id": "dracaena-din-dormitor",
+    "name": "Dracaena din Dormitor",
+    "species": "Dracaena marginata",
+    "location": "Bedroom",
+    "photo": "photos/dracaena-din-dormitor.jpg",
+    "added": "2026-05-16",
+    "care": {
+      "water": {
+        "frequency_days": 10,
+        "notes": "Lasă solul să se usuce între udări. Nu suprauda."
+      },
+      "light": "Lumină indirectă medie-puternică",
+      "fertilizer": {
+        "frequency_days": 30,
+        "season": "apr-sep",
+        "notes": "Îngrășământ lichid diluat"
+      },
+      "humidity": "Tolerantă, dar apreciază pulverizare ocazională",
+      "temperature": "18-27°C, sensibilă la curenți",
+      "repot": "La 2-3 ani",
+      "toxic": true,
+      "tips": "Vârfurile maro = aer prea uscat sau clor în apă. Folosește apă filtrată."
+    },
+    "last_watered": "2026-05-16",
+    "last_fertilized": null
+  },
+  {
+    "id": "oxalis-mov-din-dormitor",
+    "name": "Oxalis mov din Dormitor",
+    "species": "Oxalis triangularis",
+    "location": "Bedroom",
+    "photo": "photos/oxalis-mov-din-dormitor.jpg",
+    "added": "2026-05-16",
+    "care": {
+      "water": {
+        "frequency_days": 5,
+        "notes": "Menține solul ușor umed. Reduce udarea dacă intră în dormancy."
+      },
+      "light": "Lumină indirectă medie",
+      "fertilizer": {
+        "frequency_days": 30,
+        "season": "apr-sep",
+        "notes": "Îngrășământ lichid diluat"
+      },
+      "humidity": "Medie",
+      "temperature": "15-25°C",
+      "repot": "La 2 ani",
+      "toxic": false,
+      "tips": "Frunzele se închid noaptea. Dacă pare moartă, e doar dormancy — reduce apa, revine."
+    },
+    "last_watered": "2026-05-16",
+    "last_fertilized": null
+  },
+  {
+    "id": "orhidee-1-din-dormitor",
+    "name": "Orhidee 1 din Dormitor",
+    "species": "Phalaenopsis sp.",
+    "location": "Bedroom",
+    "photo": "photos/orhidee-1-din-dormitor.jpg",
+    "added": "2026-05-16",
+    "care": {
+      "water": {
+        "frequency_days": 7,
+        "notes": "Scufundă ghiveciul 10 min, lasă să se scurgă complet."
+      },
+      "light": "Lumină indirectă brightă, fără soare direct",
+      "fertilizer": {
+        "frequency_days": 14,
+        "season": "apr-oct",
+        "notes": "Îngrășământ special orhidee, diluat"
+      },
+      "humidity": "50-70%",
+      "temperature": "18-28°C, diferență zi/noapte ajută reflorirea",
+      "repot": "La 2 ani sau când substrat se descompune, doar în scoarță",
+      "toxic": false,
+      "tips": "Ghiveci roz. Nu tăia tija florală decât când e complet uscată."
+    },
+    "last_watered": "2026-05-16",
+    "last_fertilized": null
+  },
+  {
+    "id": "spathiphyllum-din-hol",
+    "name": "Spathiphyllum din Hol",
+    "species": "Spathiphyllum wallisii",
+    "location": "Stairs",
+    "photo": "photos/spathiphyllum-din-hol.jpg",
+    "added": "2026-05-16",
+    "care": {
+      "water": {
+        "frequency_days": 7,
+        "notes": "Udă când pământul e uscat la suprafață. Frunzele se lasă când vrea apă."
+      },
+      "light": "Lumină indirectă, tolerează și umbră",
+      "fertilizer": {
+        "frequency_days": 30,
+        "season": "primăvară-vară",
+        "notes": "Îngrășământ lichid lunar în sezon de creștere"
+      },
+      "humidity": "Iubește umiditatea ridicată — pulverizare săptămânală",
+      "temperature": "18-27°C, fără curenți reci",
+      "repot": "URGENT — rădăcinile ies din ghiveci!",
+      "toxic": true,
+      "tips": "Nu pune în soare direct. Frunzele galbene = prea multă lumină sau apă stagnantă."
+    },
+    "last_watered": "2026-05-16",
+    "last_fertilized": null
+  },
+  {
+    "id": "zz-plant-din-living",
+    "name": "ZZ Plant din Living",
+    "species": "Zamioculcas zamiifolia",
+    "location": "Living",
+    "photo": "photos/zz-plant-din-living.jpg",
+    "added": "2026-05-16",
+    "care": {
+      "water": {
+        "frequency_days": 14,
+        "notes": "Lasă pământul să se usuce complet între udări. Frunze galbene = supraudare!"
+      },
+      "light": "Lumină indirectă, tolerează umbră dar crește mai bine cu lumină",
+      "fertilizer": {
+        "frequency_days": 60,
+        "season": "primăvară-vară",
+        "notes": "Fertilizare rară, o dată la 2 luni în sezon de creștere"
+      },
+      "humidity": "Tolerează aer uscat, nu necesită umiditate specială",
+      "temperature": "18-26°C",
+      "repot": "La 2-3 ani, când rădăcinile ies din ghiveci",
+      "toxic": true,
+      "tips": "Tulpini lungi și arcuite = vrea mai multă lumină. Frunze galbene = prea multă apă. Rizomi groși stochează apă."
+    },
+    "last_watered": null,
+    "last_fertilized": null
+  },
+  {
+    "id": "dracaena-din-baia-de-sus",
+    "name": "Dracaena din Baia de Sus",
+    "species": "Dracaena marginata",
+    "location": "Bathroom",
+    "photo": "photos/dracaena-din-baia-de-sus.jpg",
+    "added": "2026-05-16",
+    "care": {
+      "water": {
+        "frequency_days": 10,
+        "notes": "Pământ uscat între udări"
+      },
+      "light": "Lumină indirectă",
+      "fertilizer": {
+        "frequency_days": 30,
+        "season": "primăvară-vară",
+        "notes": "Fertilizare lunară în sezon de creștere"
+      },
+      "humidity": "Tolerează umiditatea din baie",
+      "temperature": "18-27°C",
+      "repot": "La 2-3 ani",
+      "toxic": true,
+      "tips": "Umiditatea din baie îi prinde bine! Atenție cu Tudi și Ili — toxică!"
+    },
+    "last_watered": "2026-05-16",
+    "last_fertilized": null
+  },
+  {
+    "id": "epipremnum-din-camera-secretelor",
+    "name": "Epipremnum din Camera Secretelor",
+    "species": "Epipremnum aureum",
+    "location": "Secrets",
+    "photo": "photos/epipremnum-din-camera-secretelor.jpg",
+    "added": "2026-05-16",
+    "care": {
+      "water": {
+        "frequency_days": 7,
+        "notes": "Lasă pământul să se usuce între udări. Evită excesul de apă."
+      },
+      "light": "Lumină indirectă, tolerează și locuri mai întunecate",
+      "fertilizer": {
+        "frequency_days": 30,
+        "season": "primăvară-vară",
+        "notes": "Îngrășământ lichid diluat"
+      },
+      "humidity": "Tolerează umiditate normală de apartament",
+      "temperature": "18-30°C, ferește de curenți reci",
+      "repot": "La 2 ani sau când rădăcinile ies din ghiveci",
+      "toxic": true,
+      "tips": "Lujerii lungi pot fi tăiați și înmulțiți în apă. Frunzele mai mari și mai pestrițe apar cu mai multă lumină."
+    },
+    "last_watered": "2026-05-16",
+    "last_fertilized": null
+  },
+  {
+    "id": "pothos-din-camera-secretelor",
+    "name": "Pothos din Camera Secretelor",
+    "species": "Epipremnum aureum",
+    "location": "Secrets",
+    "photo": "photos/pothos-din-camera-secretelor.jpg",
+    "added": "2026-05-16",
+    "care": {
+      "water": {
+        "frequency_days": 7,
+        "notes": "Lasă pământul să se usuce între udări"
+      },
+      "light": "Lumină indirectă, tolerează și locuri mai puțin luminate",
+      "fertilizer": {
+        "frequency_days": 30,
+        "season": "primăvară-vară",
+        "notes": "Îngrășământ lichid lunar în sezon de creștere"
+      },
+      "humidity": "Tolerează umiditate normală",
+      "temperature": "18-30°C",
+      "repot": "La 2 ani sau când rădăcinile ies din ghiveci",
+      "toxic": true,
+      "tips": "Lujerii lungi pot fi tăiați și înmulțiți în apă. Arată spectaculos pe lângă bibliotecă!"
+    },
+    "last_watered": "2026-05-16",
+    "last_fertilized": null
+  },
+  {
+    "id": "zz-plant-din-hol",
+    "name": "ZZ Plant din Hol",
+    "species": "Zamioculcas zamiifolia",
+    "location": "Stairs",
+    "photo": "photos/zz-plant-din-hol.jpg",
+    "added": "2026-05-16",
+    "care": {
+      "water": {
+        "frequency_days": 14,
+        "notes": "Lasă pământul să se usuce complet între udări. Rezistă la secetă."
+      },
+      "light": "Lumină indirectă, tolerează și umbră",
+      "fertilizer": {
+        "frequency_days": 30,
+        "season": "primăvară-vară",
+        "notes": "Îngrășământ lichid o dată pe lună în sezon de creștere"
+      },
+      "humidity": "Nu are pretenții speciale la umiditate",
+      "temperature": "18-26°C",
+      "repot": "La 2-3 ani sau când rădăcinile ies din ghiveci",
+      "toxic": true,
+      "tips": "Frunzele lucioase pot fi șterse cu o cârpă umedă. Ghiveci verde mint drăguț pe scări!"
+    },
+    "last_watered": null,
+    "last_fertilized": null
+  },
+  {
+    "id": "muscat-din-living",
+    "name": "Muscată din Living",
+    "species": "Pelargonium zonale",
+    "location": "Living",
+    "photo": "photos/muscat-din-living.jpg",
+    "added": "2026-05-16",
+    "care": {
+      "water": {
+        "frequency_days": 7,
+        "notes": "Udă când pământul e uscat la suprafață. Nu uda excesiv — rădăcinile putrezesc ușor."
+      },
+      "light": "Lumină directă sau semi-directă — perfect lângă fereastră!",
+      "fertilizer": {
+        "frequency_days": 14,
+        "season": "primăvară-vară",
+        "notes": "Îngrășământ pentru plante cu flori, la 2 săptămâni în sezon."
+      },
+      "humidity": "Tolerează aer uscat, nu îi place umezeala excesivă.",
+      "temperature": "15-25°C, ferit de frig iarna.",
+      "repot": "La 1-2 ani, primăvara.",
+      "toxic": false,
+      "tips": "Taie tulpinile uscate pentru a stimula înflorirea. Frunzele galbene pot indica exces de apă."
+    },
+    "last_watered": null,
+    "last_fertilized": null
+  },
+  {
+    "id": "lavand-de-la-buc-t-rie",
+    "name": "Lavandă de la Bucătărie",
+    "species": "Lavandula angustifolia",
+    "location": "Kitchen",
+    "photo": "photos/lavand-de-la-buc-t-rie.jpg",
+    "added": "2026-05-16",
+    "care": {
+      "water": {
+        "frequency_days": 7,
+        "notes": "Lasă pământul să se usuce între udări. Nu exces de apă — urăște stagnarea!"
+      },
+      "light": "Plin soare — fereastra e perfectă!",
+      "fertilizer": {
+        "frequency_days": 30,
+        "season": "primăvară-vară",
+        "notes": "Îngrășământ pentru plante cu flori, lunar în sezon"
+      },
+      "humidity": "Scăzută — preferă aer uscat",
+      "temperature": "5-30°C, rezistentă",
+      "repot": "La 2 ani sau când rădăcinile ies din ghiveci",
+      "toxic": false,
+      "tips": "Taie tulpinile după înflorire pentru a stimula noi flori. Ghiveciul violet îi stă de minune! 💜"
+    },
+    "last_watered": null,
+    "last_fertilized": null
+  },
+  {
+    "id": "rozmarin-din-buc-t-rie",
+    "name": "Rozmarin din Bucătărie",
+    "species": "Salvia rosmarinus",
+    "location": "Kitchen",
+    "photo": "photos/rozmarin-din-buc-t-rie.jpg",
+    "added": "2026-05-16",
+    "care": {
+      "water": {
+        "frequency_days": 7,
+        "notes": "Udare moderată, pământ uscat între udări. Nu exces de apă!"
+      },
+      "light": "Soare direct — fereastra bucătăriei e perfectă",
+      "fertilizer": {
+        "frequency_days": 30,
+        "season": "primăvară-vară",
+        "notes": "Îngrășământ lichid pentru ierburi aromatice"
+      },
+      "humidity": "Tolerează aerul uscat bine",
+      "temperature": "15-25°C, rezistent la frig",
+      "repot": "La 2 ani sau când rădăcinile ies din ghiveci",
+      "toxic": false,
+      "tips": "Poți recolta ramuri pentru gătit! Tunde regulat pentru formă frumoasă. Are nevoie de drenaj bun."
+    },
+    "last_watered": null,
+    "last_fertilized": null
+  },
+  {
+    "id": "zz-plant-din-camera-lui-tudi",
+    "name": "ZZ Plant din Camera lui Tudi",
+    "species": "Zamioculcas zamiifolia",
+    "location": "Kids",
+    "photo": "photos/zz-plant-din-camera-lui-tudi.jpg",
+    "added": "2026-05-16",
+    "care": {
+      "water": {
+        "frequency_days": 14,
+        "notes": "Lasă pământul să se usuce complet între udări. Nu exces de apă!"
+      },
+      "light": "Lumină indirectă, tolerează și umbra parțială",
+      "fertilizer": {
+        "frequency_days": 30,
+        "season": "primăvară-vară",
+        "notes": "Îngrășământ lichid diluat o dată pe lună"
+      },
+      "humidity": "Tolerează umiditatea normală din casă",
+      "temperature": "18-26°C",
+      "repot": "La 2 ani sau când rădăcinile ies din ghiveci",
+      "toxic": true,
+      "tips": "⚠️ TOXIC — atenție cu Tudi! Nu lăsa frunzele la îndemână."
+    },
+    "last_watered": null,
+    "last_fertilized": null
+  },
+  {
+    "id": "muscat-din-camera-lui-tudi",
+    "name": "Muscată din Camera lui Tudi",
+    "species": "Pelargonium zonale",
+    "location": "Kids",
+    "photo": "photos/muscat-din-camera-lui-tudi.jpg",
+    "added": "2026-05-16",
+    "care": {
+      "water": {
+        "frequency_days": 7,
+        "notes": "Lasă pământul să se usuce între udări, nu uda în exces"
+      },
+      "light": "Lumină directă sau semi-directă — fereastra e perfectă",
+      "fertilizer": {
+        "frequency_days": 14,
+        "season": "primăvară-vară",
+        "notes": "Îngrășământ lichid pentru plante cu flori"
+      },
+      "humidity": "Tolerează umiditate normală, evită ceața pe frunze",
+      "temperature": "18-24°C",
+      "repot": "La 2 ani sau când rădăcinile ies din ghiveci",
+      "toxic": false,
+      "tips": "Taie florile ofilite pentru a stimula înflorirea. Frunzele catifelate nu se stropesc direct cu apă."
+    },
+    "last_watered": null,
+    "last_fertilized": null
+  },
+  {
+    "id": "muscat-2-din-camera-lui-tudi",
+    "name": "Muscată 2 din Camera lui Tudi",
+    "species": "Pelargonium zonale",
+    "location": "Kids",
+    "photo": "photos/muscat-2-din-camera-lui-tudi.jpg",
+    "added": "2026-05-16",
+    "care": {
+      "water": {
+        "frequency_days": 7,
+        "notes": "Pământ uscat între udări, nu stropi frunzele direct"
+      },
+      "light": "Soare direct sau lumină indirectă puternică — pervaz cu fereastră",
+      "fertilizer": {
+        "frequency_days": 14,
+        "season": "primăvară-vară",
+        "notes": "Îngrășământ pentru plante cu flori"
+      },
+      "humidity": "Umiditate medie, evită ceața pe frunze",
+      "temperature": "18-24°C",
+      "repot": "La 2 ani sau când rădăcinile ies din ghiveci",
+      "toxic": false,
+      "tips": "Taie tulpinile uscate pentru mai multe flori. Non-toxic pentru copii și animale."
+    },
+    "last_watered": null,
+    "last_fertilized": null
+  },
+  {
+    "id": "cactus-de-cr-ciun-din-camera-lui-tudi",
+    "name": "Cactus de Crăciun din Camera lui Tudi",
+    "species": "Schlumbergera truncata",
+    "location": "Kids",
+    "photo": "photos/cactus-de-cr-ciun-din-camera-lui-tudi.jpg",
+    "added": "2026-05-16",
+    "care": {
+      "water": {
+        "frequency_days": 10,
+        "notes": "Udă moderat, lasă pământul să se usuce între udări. Reducere udare după înflorire."
+      },
+      "light": "Lumină indirectă, fără soare direct puternic",
+      "fertilizer": {
+        "frequency_days": 14,
+        "season": "primăvară-vară",
+        "notes": "Îngrășământ lichid diluat în sezonul de creștere"
+      },
+      "humidity": "Umiditate medie-ridicată, stropire ocazională",
+      "temperature": "18-25°C, evită curenți de aer rece",
+      "repot": "La 2-3 ani sau când rădăcinile ies din ghiveci",
+      "toxic": false,
+      "tips": "Înflorește toamna/iarna. Pentru a induce înflorirea, expune la nopți mai lungi și temperaturi mai scăzute (15°C) timp de 6 săptămâni."
+    },
+    "last_watered": null,
+    "last_fertilized": null
+  },
+  {
+    "id": "money-tree-din-camera-lui-tudi",
+    "name": "Money Tree din Camera lui Tudi",
+    "species": "Pachira aquatica",
+    "location": "Kids",
+    "photo": "photos/money-tree-din-camera-lui-tudi.jpg",
+    "added": "2026-05-16",
+    "care": {
+      "water": {
+        "frequency_days": 7,
+        "notes": "Udă moderat, lasă pământul să se usuce între udări. Nu exces de apă — putrezește rădăcina."
+      },
+      "light": "Lumină indirectă strălucitoare — departe de soarele direct",
+      "fertilizer": {
+        "frequency_days": 30,
+        "season": "primăvară-vară",
+        "notes": "Îngrășământ lichid diluat o dată pe lună"
+      },
+      "humidity": "Medie spre ridicată — stropește frunzele ocazional",
+      "temperature": "18-27°C",
+      "repot": "La 2 ani sau când rădăcinile ies din ghiveci",
+      "toxic": false,
+      "tips": "Simbolul norocului și prosperității! Trunchi gros = rezervă de apă. Rotiți ghiveciul periodic pentru creștere uniformă."
+    },
+    "last_watered": null,
+    "last_fertilized": null
+  },
+  {
+    "id": "aloe-din-camera-secretelor",
+    "name": "Aloe din Camera Secretelor",
+    "species": "Aloe variegata",
+    "location": "Secrets",
+    "photo": "photos/aloe-din-camera-secretelor.jpg",
+    "added": "2026-05-16",
+    "care": {
+      "water": {
+        "frequency_days": 14,
+        "notes": "Udare rară, pământ complet uscat între udări. Nu uda în rozetă."
+      },
+      "light": "Lumină indirectă puternică sau soare parțial",
+      "fertilizer": {
+        "frequency_days": 60,
+        "season": "primăvară-vară",
+        "notes": "Îngrășământ pentru suculente, diluat la jumătate"
+      },
+      "humidity": "Scăzută — tolerează aerul uscat",
+      "temperature": "18-27°C, fără îngheț",
+      "repot": "La 2-3 ani sau când rădăcinile ies din ghiveci",
+      "toxic": true,
+      "tips": "Nu uda în rozetă — putrezește. Pete albe sunt normale, nu boală!"
+    },
+    "last_watered": null,
+    "last_fertilized": null
+  },
+  {
+    "id": "cactus-de-cr-ciun-din-secrets",
+    "name": "Cactus de Crăciun din Secrets",
+    "species": "Schlumbergera truncata",
+    "location": "Secrets",
+    "photo": "photos/cactus-de-cr-ciun-din-secrets.jpg",
+    "added": "2026-05-16",
+    "care": {
+      "water": {
+        "frequency_days": 10,
+        "notes": "Udare moderată, pământ ușor uscat între udări. În perioada de repaus (toamnă) reduce udarea."
+      },
+      "light": "Lumină indirectă puternică, fără soare direct",
+      "fertilizer": {
+        "frequency_days": 14,
+        "season": "primăvară-vară",
+        "notes": "Îngrășământ lichid diluat în perioada de creștere"
+      },
+      "humidity": "Umiditate medie-ridicată, stropire ocazională",
+      "temperature": "18-24°C. Toamna 10-15°C timp de 6 săptămâni pentru a stimula înflorirea",
+      "repot": "La 2-3 ani, primăvara",
+      "toxic": false,
+      "tips": "Florile roz/magenta sunt spectaculoase! Petale căzute pe masă = normal în perioada înfloririi. Nu muta ghiveciul în timpul înfloririi."
+    },
+    "last_watered": null,
+    "last_fertilized": null
+  },
+  {
+    "id": "haworthia-din-secrets",
+    "name": "Haworthia din Secrets",
+    "species": "Haworthia fasciata",
+    "location": "Secrets",
+    "photo": "photos/haworthia-din-secrets.jpg",
+    "added": "2026-05-16",
+    "care": {
+      "water": {
+        "frequency_days": 14,
+        "notes": "Pământ complet uscat între udări. Nu uda în rozetă."
+      },
+      "light": "Lumină indirectă puternică. Evită soarele direct de vară.",
+      "fertilizer": {
+        "frequency_days": 60,
+        "season": "primăvară-vară",
+        "notes": "Îngrășământ diluat pentru suculente."
+      },
+      "humidity": "Tolerează aerul uscat — nu are nevoie de umiditate ridicată.",
+      "temperature": "16-26°C",
+      "repot": "La 2-3 ani sau când rădăcinile ies din ghiveci.",
+      "toxic": false,
+      "tips": "Petele albe/verzui sunt normale. Ghiveci galben frumos! Nu exces de apă — principala cauză de moarte."
+    },
+    "last_watered": null,
+    "last_fertilized": null
+  }
+]

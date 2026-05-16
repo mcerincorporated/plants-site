@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calendar Plante</title>
+<style>
+:root {
+  --bg: #f5f7f0;
+  --card: #fff;
+  --accent: #4a7c59;
+  --accent2: #6ba368;
+  --text: #2d3436;
+  --muted: #636e72;
+  --danger: #e17055;
+  --border: #dfe6e9;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+header {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header h1 { font-size: 1.4em; font-weight: 600; }
+header a { color: #fff; text-decoration: none; font-size: 0.85em; opacity: 0.9; }
+header a:hover { opacity: 1; }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 20px;
+}
+.week-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.week-nav button {
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+  cursor: pointer;
+  font-size: 0.9em;
+}
+.week-nav button:hover { background: var(--accent); color: #fff; }
+.week-nav span { font-weight: 600; font-size: 0.95em; }
+.cal-week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+.cal-day {
+  background: var(--card);
+  border-radius: 10px;
+  padding: 12px;
+  min-height: 120px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s;
+}
+.cal-day:hover { transform: translateY(-1px); }
+.cal-day-today {
+  border: 2px solid var(--accent);
+  background: #f0faf4;
+}
+.cal-day-past { opacity: 0.5; }
+.cal-day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+.cal-day-name {
+  font-size: 0.8em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.cal-day-date {
+  font-size: 0.75em;
+  color: var(--muted);
+}
+.cal-day-items {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.cal-plant {
+  font-size: 0.75em;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: #e3f2fd;
+  color: #1565c0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.cal-plant-overdue {
+  background: #fde8e8;
+  color: #c0392b;
+  font-weight: 600;
+}
+.cal-plant-fertilize {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+.cal-plant-free {
+  background: transparent;
+  color: var(--muted);
+  font-style: italic;
+  text-align: center;
+  padding: 8px;
+}
+.legend {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+  font-size: 0.75em;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+.summary {
+  background: var(--card);
+  border-radius: 10px;
+  padding: 14px;
+  margin-top: 16px;
+  box-shadow: var(--shadow);
+}
+.summary h3 {
+  font-size: 0.85em;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+}
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8em;
+  padding: 6px 10px;
+  background: var(--bg);
+  border-radius: 6px;
+}
+.summary-item .next {
+  font-weight: 600;
+  color: var(--accent);
+}
+@media (max-width: 768px) {
+  .cal-week { grid-template-columns: 1fr; }
+  .cal-day { min-height: auto; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📅 Calendar Plante</h1>
+  <a href="index.html">← Înapoi la Plante</a>
+</header>
+
+<div class="container">
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#fde8e8"></div> Întârziere</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#e3f2fd"></div> Udare</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#e8f5e9"></div> Fertilizare</div>
+  </div>
+  <div class="week-nav">
+    <button onclick="changeWeek(-1)">← Săptămâna trecută</button>
+    <span id="weekLabel"></span>
+    <button onclick="changeWeek(1)">Săptămâna viitoare →</button>
+  </div>
+  <div class="cal-week" id="calWeek"></div>
+  <div class="summary" id="summary"></div>
+</div>
+
+<script>
+let plants = [];
+let weekOffset = 0;
+
+async function loadPlants() {
+  try {
+    const r = await fetch('plants.json?t=' + Date.now());
+    plants = await r.json();
+  } catch(e) { plants = []; }
+  renderCalendar();
+}
+
+function changeWeek(dir) {
+  weekOffset += dir;
+  renderCalendar();
+}
+
+function getNextWatering(plant) {
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  if (!plant.last_watered) return today;
+  const last = new Date(plant.last_watered);
+  last.setHours(0,0,0,0);
+  const next = new Date(last);
+  next.setDate(next.getDate() + plant.care.water.frequency_days);
+  return next < today ? today : next;
+}
+
+function getNextFertilizing(plant) {
+  const fert = plant.care.fertilizer;
+  if (!fert || !fert.frequency_days) return null;
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const last = plant.last_fertilized ? new Date(plant.last_fertilized) : null;
+  if (!last) return today;
+  last.setHours(0,0,0,0);
+  const next = new Date(last);
+  next.setDate(next.getDate() + fert.frequency_days);
+  return next < today ? today : next;
+}
+
+function renderCalendar() {
+  const dayNames = ['Duminică','Luni','Marți','Miercuri','Joi','Vineri','Sâmbătă'];
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  // Start of week (Monday)
+  const startOfWeek = new Date(today);
+  startOfWeek.setDate(startOfWeek.getDate() - ((startOfWeek.getDay() + 6) % 7) + (weekOffset * 7));
+
+  const endOfWeek = new Date(startOfWeek);
+  endOfWeek.setDate(endOfWeek.getDate() + 6);
+
+  const monthFmt = new Intl.DateTimeFormat('ro-RO', {month:'long', year:'numeric'});
+  document.getElementById('weekLabel').textContent =
+    `${startOfWeek.getDate()} - ${endOfWeek.getDate()} ${monthFmt.format(startOfWeek)}`;
+
+  let html = '';
+  for (let d = 0; d < 7; d++) {
+    const date = new Date(startOfWeek);
+    date.setDate(date.getDate() + d);
+    const isToday = date.getTime() === today.getTime();
+    const isPast = date < today;
+
+    const waterPlants = [];
+    const overduePlants = [];
+    const fertPlants = [];
+
+    for (const p of plants) {
+      const nextW = getNextWatering(p);
+      if (nextW.getTime() === date.getTime()) {
+        waterPlants.push(p.name);
+      } else if (nextW < date && isToday) {
+        overduePlants.push(p.name);
+      } else if (nextW < today && date.getTime() === today.getTime()) {
+        overduePlants.push(p.name);
+      }
+
+      const nextF = getNextFertilizing(p);
+      if (nextF && nextF.getTime() === date.getTime()) {
+        fertPlants.push(p.name);
+      }
+    }
+
+    // For today, show all overdue
+    if (isToday) {
+      for (const p of plants) {
+        const nextW = getNextWatering(p);
+        if (nextW <= today && !overduePlants.includes(p.name) && !waterPlants.includes(p.name)) {
+          overduePlants.push(p.name);
+        }
+      }
+    }
+
+    const classes = ['cal-day'];
+    if (isToday) classes.push('cal-day-today');
+    if (isPast && !isToday) classes.push('cal-day-past');
+
+    html += `<div class="${classes.join(' ')}">`;
+    html += `<div class="cal-day-header">`;
+    html += `<span class="cal-day-name">${isToday ? 'AZI' : dayNames[date.getDay()]}</span>`;
+    html += `<span class="cal-day-date">${date.getDate()}/${date.getMonth()+1}</span>`;
+    html += `</div><div class="cal-day-items">`;
+
+    for (const name of overduePlants) {
+      html += `<div class="cal-plant cal-plant-overdue">💧 ${name}</div>`;
+    }
+    for (const name of waterPlants) {
+      html += `<div class="cal-plant">💧 ${name}</div>`;
+    }
+    for (const name of fertPlants) {
+      html += `<div class="cal-plant cal-plant-fertilize">🌿 ${name}</div>`;
+    }
+    if (!overduePlants.length && !waterPlants.length && !fertPlants.length) {
+      html += `<div class="cal-plant-free">Nimic</div>`;
+    }
+
+    html += `</div></div>`;
+  }
+
+  document.getElementById('calWeek').innerHTML = html;
+  renderSummary();
+}
+
+function renderSummary() {
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  let html = '<h3>Următoarea udare per plantă</h3><div class="summary-grid">';
+  const sorted = [...plants].sort((a,b) => {
+    const diffA = getNextWatering(a) - today;
+    const diffB = getNextWatering(b) - today;
+    if (diffA !== diffB) return diffA - diffB;
+    if (a.location !== b.location) return a.location.localeCompare(b.location);
+    return a.name.localeCompare(b.name);
+  });
+  for (const p of sorted) {
+    const next = getNextWatering(p);
+    const diff = Math.floor((next - today) / 86400000);
+    let label;
+    if (diff < 0) label = `<span style="color:#c0392b">${-diff}z întârziere!</span>`;
+    else if (diff === 0) label = `<span style="color:#e65100">Azi</span>`;
+    else if (diff === 1) label = 'Mâine';
+    else label = `în ${diff}z`;
+    html += `<div class="summary-item"><span>${p.name}</span><span class="next">${label}</span></div>`;
+  }
+  html += '</div>';
+  document.getElementById('summary').innerHTML = html;
+}
+
+loadPlants();
+</script>
+</body>
+</html>
