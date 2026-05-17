@@ -336,7 +336,7 @@ header p { opacity: 0.85; margin-top: 4px; font-size: 0.95em; }
 <script>
 let plants = [];
 let currentFilter = null;
-const API = 'http://192.168.50.56:8080/api/plants';
+const WEBHOOK = 'https://hooks.nabu.casa/gAAAAABqCeSj_gScCWH28uwrJCrX-3kG4yfhLNMG3yoKTQeZf0e_In_OmWNSWIM9Ia3P5mrlAnfZ2LD77w0i8ulWR_eeOX584y7T_7BPxAo3JTC98I5lbFE5Dz4mR8tkiwJfCHUYrYYMXOy3-DuLme0F1fJAYMyCJjhzoKvGeqPb11w-KynaINI=';
 
 function showToast(msg) {
   const t = document.getElementById('toast');
@@ -347,39 +347,48 @@ function showToast(msg) {
 
 async function plantAction(id, action) {
   try {
-    const r = await fetch(API + '/action', {
+    const labels = {water: 'Udată', fertilize_leaves: 'Fertilizare frunze', fertilize_soil: 'Fertilizare pământ'};
+    showToast(`${labels[action]} — se salvează...`);
+    const today = new Date().toISOString().split('T')[0];
+    const plant = plants.find(p => p.id === id);
+    if (plant) {
+      if (action === 'water') plant.last_watered = today;
+      else if (action === 'fertilize_leaves') plant.last_fertilized_leaves = today;
+      else if (action === 'fertilize_soil') plant.last_fertilized = today;
+      renderPlants();
+    }
+    const r = await fetch(WEBHOOK, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({id, action})
     });
-    const d = await r.json();
-    if (d.ok) {
-      const labels = {water: 'Udată', fertilize_leaves: 'Fertilizare frunze', fertilize_soil: 'Fertilizare pământ'};
-      showToast(`${labels[action]} — ${d.plant}`);
-      await loadPlants();
-      if (document.getElementById('modal').classList.contains('active')) showPlant(id);
+    if (r.ok) {
+      showToast(`${labels[action]} — salvat!`);
     } else {
-      showToast('Eroare: ' + d.error);
+      showToast('Eroare la salvare');
     }
   } catch(e) { showToast('Nu pot contacta serverul'); }
 }
 
 async function waterAll(location) {
   const toWater = plants.filter(p => !location || p.location === location);
+  const today = new Date().toISOString().split('T')[0];
+  toWater.forEach(p => { p.last_watered = today; });
+  renderPlants();
+  showToast(`Se salvează ${toWater.length} plante...`);
   let count = 0;
   for (const p of toWater) {
     try {
-      const r = await fetch(API + '/action', {
+      const r = await fetch(WEBHOOK, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({id: p.id, action: 'water'})
       });
-      const d = await r.json();
-      if (d.ok) count++;
+      if (r.ok) count++;
+      await new Promise(resolve => setTimeout(resolve, 2000));
     } catch(e) {}
   }
   showToast(`Udate ${count} plante${location ? ' din ' + location : ''}`);
-  await loadPlants();
 }
 
 async function loadPlants() {
