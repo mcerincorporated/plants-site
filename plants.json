@@ -401,8 +401,14 @@
       "toxic": false,
       "tips": "Frunzele se închid noaptea. Dacă pare moartă, e doar dormancy — reduce apa, revine."
     },
-    "last_watered": "2026-05-16",
-    "last_fertilized": null
+    "last_watered": "2026-05-18",
+    "last_fertilized": null,
+    "watering_log": [
+      {
+        "date": "2026-05-18",
+        "by": "cristi"
+      }
+    ]
   },
   {
     "id": "orhidee-1-din-dormitor",
