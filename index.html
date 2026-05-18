@@ -473,7 +473,18 @@ header p { opacity: 0.85; margin-top: 4px; font-size: 0.95em; }
 let plants = [];
 let currentFilter = null;
 let pendingAction = null;
-const WEBHOOK = 'https://hooks.nabu.casa/gAAAAABqCzjRAga6pTV520xxmhvXK2i2Bwf69itxAyZs5sRGe4Fk7VTJqJUu5CwCuvL3NBDiAOchVoy-OHaMvvbtxph78NEebsLRlnWuqUF66R37c9eZlTXOLePSBYJzwzZswDeOsu1jSkcGAOCvNNXQaPocTLt-QL5ymDG7j5KnFSiXvyWDLHQ=';
+const PROXY_LOCAL = 'http://192.168.50.81:8124';
+const WEBHOOK_NABU = 'https://hooks.nabu.casa/gAAAAABqCzjRAga6pTV520xxmhvXK2i2Bwf69itxAyZs5sRGe4Fk7VTJqJUu5CwCuvL3NBDiAOchVoy-OHaMvvbtxph78NEebsLRlnWuqUF66R37c9eZlTXOLePSBYJzwzZswDeOsu1jSkcGAOCvNNXQaPocTLt-QL5ymDG7j5KnFSiXvyWDLHQ=';
+async function sendToWebhook(data) {
+  try {
+    const r = await fetch(PROXY_LOCAL, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
+    if (r.ok) return true;
+  } catch(e) {}
+  try {
+    await fetch(WEBHOOK_NABU, {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain'}, body:JSON.stringify(data)});
+  } catch(e) {}
+  return false;
+}
 const PEOPLE = ['tudor', 'ilinca', 'manu', 'cristi'];
 const PEOPLE_LABELS = {tudor: 'Tudor', ilinca: 'Ilinca', manu: 'Manu', cristi: 'Cristi'};
 const PEOPLE_COLORS = {tudor: '#42a5f5', ilinca: '#ab47bc', manu: '#66bb6a', cristi: '#ffa726'};
@@ -512,7 +523,7 @@ async function undoLastAction() {
   hideUndoBar();
   showToast('Se anulează...');
   try {
-    navigator.sendBeacon(WEBHOOK, new Blob([JSON.stringify({id, action: 'undo', by: 'system'})], {type: 'application/json'}));
+    sendToWebhook({id, action:'undo', by:'system'});
     showToast('Anulat!');
   } catch(e) { showToast('Eroare la anulare'); }
   lastAction = null;
@@ -572,8 +583,8 @@ async function doPlantAction(id, action, by) {
       render(currentFilter);
     }
     showToast(`${labels[action]} de ${PEOPLE_LABELS[by]}`);
-    navigator.sendBeacon(WEBHOOK, new Blob([JSON.stringify({id, action, by, ts: new Date().toISOString(), ua: navigator.userAgent})], {type: 'application/json'}));
-  } catch(e) { showToast('Nu pot contacta serverul'); }
+    sendToWebhook({id, action, by, ts: new Date().toISOString(), ua: navigator.userAgent});
+  } catch(e) {}
 }
 
 function plantAction(id, action) {
@@ -597,7 +608,7 @@ async function doWaterAll(location, by) {
   let count = 0;
   for (const p of toWater) {
     try {
-      navigator.sendBeacon(WEBHOOK, new Blob([JSON.stringify({id: p.id, action: 'water', by})], {type: 'application/json'}));
+      await sendToWebhook({id: p.id, action:'water', by});
       count++;
       await new Promise(resolve => setTimeout(resolve, 2000));
     } catch(e) {}
