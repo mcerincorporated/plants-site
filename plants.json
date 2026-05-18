@@ -794,9 +794,14 @@
       "toxic": false,
       "tips": "Taie tulpinile uscate pentru mai multe flori. Non-toxic pentru copii și animale."
     },
-    "last_watered": null,
+    "last_watered": "2026-05-18",
     "last_fertilized": null,
-    "watering_log": []
+    "watering_log": [
+      {
+        "date": "2026-05-18",
+        "by": "tudor"
+      }
+    ]
   },
   {
     "id": "cactus-de-cr-ciun-din-camera-lui-tudi",
