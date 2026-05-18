@@ -70,5 +70,11 @@
     "plant": "nabu-ui-test",
     "action": "water",
     "by": "cristi"
+  },
+  {
+    "ts": "2026-05-18T17:08:33Z",
+    "plant": "manual-verify",
+    "action": "water",
+    "by": "cristi"
   }
 ]
