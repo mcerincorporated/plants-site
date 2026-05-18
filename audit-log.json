@@ -100,5 +100,11 @@
     "plant": "test-plant-delete-me",
     "action": "undo",
     "by": "system"
+  },
+  {
+    "ts": "2026-05-18T18:01:56Z",
+    "plant": "test-plant-delete-me",
+    "action": "water",
+    "by": "cristi"
   }
 ]
