@@ -1,41 +1,5 @@
 [
   {
-    "id": "test-plant-delete-me",
-    "name": "🧪 TEST PLANT — Apasă Am Udat",
-    "species": "Testus deleticus",
-    "location": "Living",
-    "added": "2026-05-18",
-    "care": {
-      "water": {
-        "frequency_days": 3,
-        "notes": "Test plant — șterge după test"
-      },
-      "light": "N/A",
-      "fertilizer": {
-        "frequency_days": 99,
-        "season": "never",
-        "notes": "N/A"
-      },
-      "humidity": "N/A",
-      "temperature": "N/A",
-      "repot": "N/A",
-      "toxic": false,
-      "tips": "Aceasta e o plantă de test. Șterge-o după ce confirmi că Am Udat funcționează."
-    },
-    "last_watered": "2026-05-18",
-    "last_fertilized": null,
-    "watering_log": [
-      {
-        "date": "2026-05-18",
-        "by": "cristi"
-      },
-      {
-        "date": "2026-05-18",
-        "by": "cristi"
-      }
-    ]
-  },
-  {
     "id": "monstera-mare-din-living",
     "name": "Monstera mare din Living",
     "species": "Monstera deliciosa",
@@ -61,12 +25,7 @@
     },
     "last_watered": "2026-05-18",
     "last_fertilized": null,
-    "watering_log": [
-      {
-        "date": "2026-05-18",
-        "by": "manu"
-      }
-    ]
+    "watering_log": []
   },
   {
     "id": "monstera-mic-din-living",
@@ -93,7 +52,8 @@
       "tips": "Ghiveci galben. Plantă tânără — frunzele vor dezvolta mai multe fenestrations cu timpul. Ține lângă cea mare pentru consistență vizuală 🌿"
     },
     "last_watered": null,
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "aloe-din-living",
@@ -120,7 +80,8 @@
       "tips": "Gelul din frunze e util pentru arsuri minore. Nu uda în exces!"
     },
     "last_watered": null,
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "crassula-din-living",
@@ -147,7 +108,8 @@
       "tips": "Toxică pentru animale. Frunzele cad dacă e prea multă apă. Aduce noroc în casă! 🍀"
     },
     "last_watered": null,
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "calathea-din-living",
@@ -240,7 +202,8 @@
       "tips": "Ciupește vârfurile regulat pentru a preveni înflorirea. Recoltează de sus în jos."
     },
     "last_watered": null,
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "spathiphyllum-din-bucatarie",
@@ -267,7 +230,8 @@
       "tips": "Șterge frunzele de praf periodic. Purifică aerul."
     },
     "last_watered": null,
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "alocasia-din-living",
@@ -294,7 +258,8 @@
       "tips": "Șterge frunzele de praf. Atenție - toxică pentru copii și animale! Fundiță verde decorativă la tulpină."
     },
     "last_watered": null,
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "pothos-din-bucatarie",
@@ -321,7 +286,8 @@
       "tips": "Creștere rapidă, ideală pentru agățat. Taie și pune în apă pentru propagare."
     },
     "last_watered": null,
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "ficus-tineke-din-dormitor",
@@ -348,7 +314,8 @@
       "tips": "Taie cu mănuși — seva albă iritantă! Nu muta des — se adaptează greu la lumină nouă."
     },
     "last_watered": "2026-05-16",
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "oxalis-verde-din-dormitor",
@@ -375,7 +342,8 @@
       "tips": "Dacă intră în repaus, oprește udarea 4-6 săptămâni apoi reia. Mută mai aproape de fereastră!"
     },
     "last_watered": "2026-05-16",
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "orhidee-2-din-dormitor",
@@ -402,7 +370,8 @@
       "tips": "Nu tăia tulpina florală până nu se usucă complet — poate reflori! Ghiveci cu sistem auto-udare roz."
     },
     "last_watered": "2026-05-16",
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "dracaena-din-dormitor",
@@ -429,7 +398,8 @@
       "tips": "Vârfurile maro = aer prea uscat sau clor în apă. Folosește apă filtrată."
     },
     "last_watered": "2026-05-16",
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "oxalis-mov-din-dormitor",
@@ -457,12 +427,7 @@
     },
     "last_watered": "2026-05-18",
     "last_fertilized": null,
-    "watering_log": [
-      {
-        "date": "2026-05-18",
-        "by": "cristi"
-      }
-    ]
+    "watering_log": []
   },
   {
     "id": "orhidee-1-din-dormitor",
@@ -489,7 +454,8 @@
       "tips": "Ghiveci roz. Nu tăia tija florală decât când e complet uscată."
     },
     "last_watered": "2026-05-16",
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "spathiphyllum-din-hol",
@@ -516,7 +482,8 @@
       "tips": "Nu pune în soare direct. Frunzele galbene = prea multă lumină sau apă stagnantă."
     },
     "last_watered": "2026-05-16",
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "zz-plant-din-living",
@@ -543,7 +510,8 @@
       "tips": "Tulpini lungi și arcuite = vrea mai multă lumină. Frunze galbene = prea multă apă. Rizomi groși stochează apă."
     },
     "last_watered": null,
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "dracaena-din-baia-de-sus",
@@ -570,7 +538,8 @@
       "tips": "Umiditatea din baie îi prinde bine! Atenție cu Tudi și Ili — toxică!"
     },
     "last_watered": "2026-05-16",
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "epipremnum-din-camera-secretelor",
@@ -597,7 +566,8 @@
       "tips": "Lujerii lungi pot fi tăiați și înmulțiți în apă. Frunzele mai mari și mai pestrițe apar cu mai multă lumină."
     },
     "last_watered": "2026-05-16",
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "pothos-din-camera-secretelor",
@@ -624,7 +594,8 @@
       "tips": "Lujerii lungi pot fi tăiați și înmulțiți în apă. Arată spectaculos pe lângă bibliotecă!"
     },
     "last_watered": "2026-05-16",
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "zz-plant-din-hol",
@@ -651,7 +622,8 @@
       "tips": "Frunzele lucioase pot fi șterse cu o cârpă umedă. Ghiveci verde mint drăguț pe scări!"
     },
     "last_watered": null,
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "muscat-din-living",
@@ -678,7 +650,8 @@
       "tips": "Taie tulpinile uscate pentru a stimula înflorirea. Frunzele galbene pot indica exces de apă."
     },
     "last_watered": null,
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "lavand-de-la-buc-t-rie",
@@ -705,7 +678,8 @@
       "tips": "Taie tulpinile după înflorire pentru a stimula noi flori. Ghiveciul violet îi stă de minune! 💜"
     },
     "last_watered": null,
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "rozmarin-din-buc-t-rie",
@@ -732,7 +706,8 @@
       "tips": "Poți recolta ramuri pentru gătit! Tunde regulat pentru formă frumoasă. Are nevoie de drenaj bun."
     },
     "last_watered": null,
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "zz-plant-din-camera-lui-tudi",
@@ -759,7 +734,8 @@
       "tips": "⚠️ TOXIC — atenție cu Tudi! Nu lăsa frunzele la îndemână."
     },
     "last_watered": null,
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "muscat-din-camera-lui-tudi",
@@ -786,7 +762,8 @@
       "tips": "Taie florile ofilite pentru a stimula înflorirea. Frunzele catifelate nu se stropesc direct cu apă."
     },
     "last_watered": null,
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "muscat-2-din-camera-lui-tudi",
@@ -813,7 +790,8 @@
       "tips": "Taie tulpinile uscate pentru mai multe flori. Non-toxic pentru copii și animale."
     },
     "last_watered": null,
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "cactus-de-cr-ciun-din-camera-lui-tudi",
@@ -840,7 +818,8 @@
       "tips": "Înflorește toamna/iarna. Pentru a induce înflorirea, expune la nopți mai lungi și temperaturi mai scăzute (15°C) timp de 6 săptămâni."
     },
     "last_watered": null,
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "money-tree-din-camera-lui-tudi",
@@ -867,7 +846,8 @@
       "tips": "Simbolul norocului și prosperității! Trunchi gros = rezervă de apă. Rotiți ghiveciul periodic pentru creștere uniformă."
     },
     "last_watered": null,
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "aloe-din-camera-secretelor",
@@ -894,7 +874,8 @@
       "tips": "Nu uda în rozetă — putrezește. Pete albe sunt normale, nu boală!"
     },
     "last_watered": null,
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "cactus-de-cr-ciun-din-secrets",
@@ -921,7 +902,8 @@
       "tips": "Florile roz/magenta sunt spectaculoase! Petale căzute pe masă = normal în perioada înfloririi. Nu muta ghiveciul în timpul înfloririi."
     },
     "last_watered": null,
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   },
   {
     "id": "haworthia-din-secrets",
@@ -948,6 +930,7 @@
       "tips": "Petele albe/verzui sunt normale. Ghiveci galben frumos! Nu exces de apă — principala cauză de moarte."
     },
     "last_watered": null,
-    "last_fertilized": null
+    "last_fertilized": null,
+    "watering_log": []
   }
 ]
