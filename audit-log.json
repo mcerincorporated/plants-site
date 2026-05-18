@@ -28,5 +28,11 @@
     "plant": "test",
     "action": "water",
     "by": "tudor"
+  },
+  {
+    "ts": "2026-05-18T16:23:38Z",
+    "plant": "test-beacon",
+    "action": "water",
+    "by": "tudor"
   }
 ]
