@@ -733,9 +733,14 @@
       "toxic": true,
       "tips": "⚠️ TOXIC — atenție cu Tudi! Nu lăsa frunzele la îndemână."
     },
-    "last_watered": null,
+    "last_watered": "2026-05-18",
     "last_fertilized": null,
-    "watering_log": []
+    "watering_log": [
+      {
+        "date": "2026-05-18",
+        "by": "tudor"
+      }
+    ]
   },
   {
     "id": "muscat-din-camera-lui-tudi",
@@ -860,9 +865,14 @@
       "toxic": false,
       "tips": "Simbolul norocului și prosperității! Trunchi gros = rezervă de apă. Rotiți ghiveciul periodic pentru creștere uniformă."
     },
-    "last_watered": null,
+    "last_watered": "2026-05-18",
     "last_fertilized": null,
-    "watering_log": []
+    "watering_log": [
+      {
+        "date": "2026-05-18",
+        "by": "tudor"
+      }
+    ]
   },
   {
     "id": "aloe-din-camera-secretelor",
