@@ -23,8 +23,14 @@
       "toxic": true,
       "tips": "Șterge frunzele cu o cârpă umedă pentru a elimina praful. Suport/tutore pentru creștere verticală. Toxică pentru animale și copii mici!"
     },
-    "last_watered": "2026-05-15",
-    "last_fertilized": null
+    "last_watered": "2026-05-18",
+    "last_fertilized": null,
+    "watering_log": [
+      {
+        "date": "2026-05-18",
+        "by": "manu"
+      }
+    ]
   },
   {
     "id": "monstera-mic-din-living",
