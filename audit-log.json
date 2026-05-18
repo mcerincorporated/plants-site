@@ -10,5 +10,11 @@
     "plant": "calathea-din-living",
     "action": "water",
     "by": "tudor"
+  },
+  {
+    "ts": "2026-05-18T16:04:53Z",
+    "plant": "verify",
+    "action": "water",
+    "by": "test"
   }
 ]
