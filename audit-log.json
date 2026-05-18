@@ -4,5 +4,11 @@
     "plant": "monstera-mare-din-living",
     "action": "water",
     "by": "manu"
+  },
+  {
+    "ts": "2026-05-18T16:00:15Z",
+    "plant": "calathea-din-living",
+    "action": "water",
+    "by": "tudor"
   }
 ]
