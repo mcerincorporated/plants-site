@@ -7,7 +7,7 @@
     "added": "2026-05-18",
     "care": {
       "water": {
-        "frequency_days": 1,
+        "frequency_days": 3,
         "notes": "Test plant — șterge după test"
       },
       "light": "N/A",
