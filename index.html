@@ -638,12 +638,13 @@ function renderScoreboard() {
   sorted.forEach((person, i) => {
     const s = scores[person];
     const color = PEOPLE_COLORS[person];
-    const lei = s.onTime * LEI_PER_STAR;
+    const isKid = person === 'tudor' || person === 'ilinca';
+    const lei = isKid ? s.onTime * LEI_PER_STAR : null;
     html += `<tr style="border-bottom:1px solid var(--border)">
       <td style="padding:6px 8px;font-weight:700;color:${color}">${i+1}</td>
       <td style="padding:6px 8px;font-weight:600">${PEOPLE_LABELS[person]}</td>
       <td style="padding:6px 8px;text-align:center;font-weight:700">${s.onTime}</td>
-      <td style="padding:6px 8px;text-align:center;font-weight:700;color:#2e7d32">${lei} lei</td>
+      <td style="padding:6px 8px;text-align:center;font-weight:700;color:#2e7d32">${isKid ? lei + ' lei' : '—'}</td>
       <td style="padding:6px 8px">${s.streak > 1 ? '🔥 ' + s.streak + 'z' : '—'}</td>
     </tr>`;
   });
