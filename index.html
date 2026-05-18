@@ -461,8 +461,12 @@ const WEBHOOK = 'https://4mb8geyzjtyxdheozlbvfcamkw14oy3w.ui.nabu.casa/api/webho
 async function sendToWebhook(data) {
   try {
     const r = await fetch(WEBHOOK, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
+    showToast(r.ok ? '✓ Salvat pe server!' : '✗ Server: ' + r.status);
     return r.ok;
-  } catch(e) { return false; }
+  } catch(e) {
+    showToast('✗ Eroare: ' + e.message);
+    return false;
+  }
 }
 const PEOPLE = ['tudor', 'ilinca', 'manu', 'cristi'];
 const PEOPLE_LABELS = {tudor: 'Tudor', ilinca: 'Ilinca', manu: 'Manu', cristi: 'Cristi'};
