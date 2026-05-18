@@ -454,17 +454,14 @@ header p { opacity: 0.85; margin-top: 4px; font-size: 0.95em; }
 let plants = [];
 let currentFilter = null;
 let pendingAction = null;
-const PROXY_LOCAL = 'http://192.168.50.81:8124';
-const WEBHOOK_NABU = 'https://hooks.nabu.casa/gAAAAABqCzjRAga6pTV520xxmhvXK2i2Bwf69itxAyZs5sRGe4Fk7VTJqJUu5CwCuvL3NBDiAOchVoy-OHaMvvbtxph78NEebsLRlnWuqUF66R37c9eZlTXOLePSBYJzwzZswDeOsu1jSkcGAOCvNNXQaPocTLt-QL5ymDG7j5KnFSiXvyWDLHQ=';
+const WEBHOOK_URL = (location.protocol === 'http:' && location.hostname === '192.168.50.81')
+  ? '/'
+  : 'http://192.168.50.81:8124';
 async function sendToWebhook(data) {
   try {
-    const r = await fetch(PROXY_LOCAL, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
-    if (r.ok) return true;
-  } catch(e) {}
-  try {
-    await fetch(WEBHOOK_NABU, {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain'}, body:JSON.stringify(data)});
-  } catch(e) {}
-  return false;
+    const r = await fetch(WEBHOOK_URL, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
+    return r.ok;
+  } catch(e) { return false; }
 }
 const PEOPLE = ['tudor', 'ilinca', 'manu', 'cristi'];
 const PEOPLE_LABELS = {tudor: 'Tudor', ilinca: 'Ilinca', manu: 'Manu', cristi: 'Cristi'};
