@@ -137,8 +137,14 @@
       "toxic": false,
       "tips": "Frunzele se ridică noaptea — e normal! Sensibilă la apa cu fluor."
     },
-    "last_watered": null,
-    "last_fertilized": null
+    "last_watered": "2026-05-18",
+    "last_fertilized": null,
+    "watering_log": [
+      {
+        "date": "2026-05-18",
+        "by": "tudor"
+      }
+    ]
   },
   {
     "id": "sansevieria-din-living",
