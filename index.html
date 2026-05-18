@@ -454,12 +454,10 @@ header p { opacity: 0.85; margin-top: 4px; font-size: 0.95em; }
 let plants = [];
 let currentFilter = null;
 let pendingAction = null;
-const WEBHOOK_URL = (location.protocol === 'http:' && location.hostname === '192.168.50.81')
-  ? '/'
-  : 'http://192.168.50.81:8124';
+const WEBHOOK = 'https://4mb8geyzjtyxdheozlbvfcamkw14oy3w.ui.nabu.casa/api/webhook/plants_action';
 async function sendToWebhook(data) {
   try {
-    const r = await fetch(WEBHOOK_URL, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
+    const r = await fetch(WEBHOOK, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
     return r.ok;
   } catch(e) { return false; }
 }
