@@ -229,8 +229,42 @@ header p { opacity: 0.85; margin-top: 4px; font-size: 0.95em; }
   z-index: 200;
   opacity: 0;
   transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 .toast.show { opacity: 1; }
+.undo-btn {
+  background: #ffa726;
+  color: #333;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85em;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.undo-btn:active { transform: scale(0.95); }
+.undo-bar {
+  position: fixed;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff3e0;
+  border: 1px solid #ffa726;
+  color: #e65100;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 0.85em;
+  z-index: 199;
+  display: none;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  max-width: 90vw;
+}
+.undo-bar.active { display: flex; }
 .calendar {
   max-width: 1200px;
   margin: 0 auto;
@@ -419,6 +453,7 @@ header p { opacity: 0.85; margin-top: 4px; font-size: 0.95em; }
 <div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
   <div class="modal" id="modalContent"></div>
 </div>
+<div class="undo-bar" id="undoBar"></div>
 <div class="toast" id="toast"></div>
 <div class="person-picker-backdrop" id="pickerBackdrop" onclick="closePersonPicker()"></div>
 <div class="person-picker" id="personPicker">
@@ -440,11 +475,49 @@ const PEOPLE = ['tudor', 'ilinca', 'manu', 'cristi'];
 const PEOPLE_LABELS = {tudor: 'Tudor', ilinca: 'Ilinca', manu: 'Manu', cristi: 'Cristi'};
 const PEOPLE_COLORS = {tudor: '#42a5f5', ilinca: '#ab47bc', manu: '#66bb6a', cristi: '#ffa726'};
 
+let lastAction = null;
+
 function showToast(msg) {
   const t = document.getElementById('toast');
-  t.textContent = msg;
+  t.innerHTML = `<span>${msg}</span>`;
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+function showUndoBar() {
+  if (!lastAction) { hideUndoBar(); return; }
+  const plant = plants.find(p => p.id === lastAction.id);
+  const name = plant ? plant.name : lastAction.id;
+  const bar = document.getElementById('undoBar');
+  bar.innerHTML = `<span>Ultima: ${name} udată de ${PEOPLE_LABELS[lastAction.by]}</span><button class="undo-btn" onclick="undoLastAction()">↩ M-am răzgândit</button>`;
+  bar.classList.add('active');
+}
+
+function hideUndoBar() {
+  document.getElementById('undoBar').classList.remove('active');
+}
+
+async function undoLastAction() {
+  if (!lastAction) return;
+  const {id, prevWatered, prevLog} = lastAction;
+  const plant = plants.find(p => p.id === id);
+  if (plant) {
+    plant.last_watered = prevWatered;
+    plant.watering_log = prevLog;
+    render(currentFilter);
+  }
+  hideUndoBar();
+  showToast('Se anulează...');
+  try {
+    const r = await fetch(WEBHOOK, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({id, action: 'undo', by: 'system'})
+    });
+    if (r.ok) showToast('Anulat!');
+    else showToast('Eroare la anulare');
+  } catch(e) { showToast('Eroare la anulare'); }
+  lastAction = null;
 }
 
 function openPersonPicker(id, action) {
@@ -486,29 +559,27 @@ function selectPerson(person) {
 async function doPlantAction(id, action, by) {
   try {
     const labels = {water: 'Udată', fertilize_leaves: 'Fertilizare frunze', fertilize_soil: 'Fertilizare pământ'};
-    showToast(`${labels[action]} de ${PEOPLE_LABELS[by]} — se salvează...`);
     const today = new Date().toISOString().split('T')[0];
     const plant = plants.find(p => p.id === id);
-    if (plant) {
-      if (action === 'water') {
-        plant.last_watered = today;
-        if (!plant.watering_log) plant.watering_log = [];
-        plant.watering_log.push({date: today, by});
-      }
-      else if (action === 'fertilize_leaves') plant.last_fertilized_leaves = today;
+    if (plant && action === 'water') {
+      lastAction = {id, by, prevWatered: plant.last_watered, prevLog: [...(plant.watering_log || [])]};
+      plant.last_watered = today;
+      if (!plant.watering_log) plant.watering_log = [];
+      plant.watering_log.push({date: today, by});
+      render(currentFilter);
+      showUndoBar();
+    } else if (plant) {
+      if (action === 'fertilize_leaves') plant.last_fertilized_leaves = today;
       else if (action === 'fertilize_soil') plant.last_fertilized = today;
       render(currentFilter);
     }
+    showToast(`${labels[action]} de ${PEOPLE_LABELS[by]}`);
     const r = await fetch(WEBHOOK, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({id, action, by, ts: new Date().toISOString(), ua: navigator.userAgent})
     });
-    if (r.ok) {
-      showToast(`${labels[action]} de ${PEOPLE_LABELS[by]} — salvat!`);
-    } else {
-      showToast('Eroare la salvare');
-    }
+    if (!r.ok) showToast('Eroare la salvare');
   } catch(e) { showToast('Nu pot contacta serverul'); }
 }
 
