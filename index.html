@@ -309,10 +309,94 @@ header p { opacity: 0.85; margin-top: 4px; font-size: 0.95em; }
 }
 .empty-state .icon { font-size: 3em; margin-bottom: 12px; }
 .empty-state p { margin-top: 8px; font-size: 0.9em; }
+.person-picker {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--card);
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+  padding: 20px;
+  z-index: 300;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+.person-picker.active { transform: translateY(0); }
+.person-picker h3 { font-size: 1em; margin-bottom: 12px; text-align: center; color: var(--text); }
+.person-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.person-btn {
+  padding: 14px;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+}
+.person-btn:active { transform: scale(0.95); }
+.person-btn[data-person="tudor"] { border-color: #42a5f5; color: #1565c0; }
+.person-btn[data-person="tudor"]:hover { background: #e3f2fd; }
+.person-btn[data-person="ilinca"] { border-color: #ab47bc; color: #6a1b9a; }
+.person-btn[data-person="ilinca"]:hover { background: #f3e5f5; }
+.person-btn[data-person="manu"] { border-color: #66bb6a; color: #2e7d32; }
+.person-btn[data-person="manu"]:hover { background: #e8f5e9; }
+.person-btn[data-person="cristi"] { border-color: #ffa726; color: #e65100; }
+.person-btn[data-person="cristi"]:hover { background: #fff3e0; }
+.person-picker-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 299;
+  display: none;
+}
+.person-picker-backdrop.active { display: block; }
+.scoreboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+}
+.scoreboard-card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+.scoreboard-card h3 {
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.scoreboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+.score-item {
+  text-align: center;
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--bg);
+}
+.score-name { font-weight: 700; font-size: 0.9em; margin-bottom: 4px; }
+.score-stars { font-size: 1.3em; margin-bottom: 4px; }
+.score-count { font-size: 0.75em; color: var(--muted); }
+.score-streak { font-size: 0.8em; color: #e65100; font-weight: 600; }
+.score-item[data-person="tudor"] { border-left: 3px solid #42a5f5; }
+.score-item[data-person="ilinca"] { border-left: 3px solid #ab47bc; }
+.score-item[data-person="manu"] { border-left: 3px solid #66bb6a; }
+.score-item[data-person="cristi"] { border-left: 3px solid #ffa726; }
 @media (max-width: 600px) {
   .grid { grid-template-columns: 1fr; padding: 12px; gap: 12px; }
   header { padding: 18px 16px; }
   header h1 { font-size: 1.3em; }
+  .person-buttons { grid-template-columns: 1fr 1fr; }
 }
 </style>
 </head>
@@ -325,6 +409,7 @@ header p { opacity: 0.85; margin-top: 4px; font-size: 0.95em; }
 </header>
 
 <div class="stats" id="stats"></div>
+<div class="scoreboard" id="scoreboard"></div>
 <div class="filters" id="filters"></div>
 <div class="grid" id="grid"></div>
 
@@ -332,11 +417,25 @@ header p { opacity: 0.85; margin-top: 4px; font-size: 0.95em; }
   <div class="modal" id="modalContent"></div>
 </div>
 <div class="toast" id="toast"></div>
+<div class="person-picker-backdrop" id="pickerBackdrop" onclick="closePersonPicker()"></div>
+<div class="person-picker" id="personPicker">
+  <h3 id="pickerTitle">Cine a udat?</h3>
+  <div class="person-buttons">
+    <button class="person-btn" data-person="tudor" onclick="selectPerson('tudor')">Tudor</button>
+    <button class="person-btn" data-person="ilinca" onclick="selectPerson('ilinca')">Ilinca</button>
+    <button class="person-btn" data-person="manu" onclick="selectPerson('manu')">Manu</button>
+    <button class="person-btn" data-person="cristi" onclick="selectPerson('cristi')">Cristi</button>
+  </div>
+</div>
 
 <script>
 let plants = [];
 let currentFilter = null;
+let pendingAction = null;
 const WEBHOOK = 'https://hooks.nabu.casa/gAAAAABqCeSj_gScCWH28uwrJCrX-3kG4yfhLNMG3yoKTQeZf0e_In_OmWNSWIM9Ia3P5mrlAnfZ2LD77w0i8ulWR_eeOX584y7T_7BPxAo3JTC98I5lbFE5Dz4mR8tkiwJfCHUYrYYMXOy3-DuLme0F1fJAYMyCJjhzoKvGeqPb11w-KynaINI=';
+const PEOPLE = ['tudor', 'ilinca', 'manu', 'cristi'];
+const PEOPLE_LABELS = {tudor: 'Tudor', ilinca: 'Ilinca', manu: 'Manu', cristi: 'Cristi'};
+const PEOPLE_COLORS = {tudor: '#42a5f5', ilinca: '#ab47bc', manu: '#66bb6a', cristi: '#ffa726'};
 
 function showToast(msg) {
   const t = document.getElementById('toast');
@@ -345,36 +444,78 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 2500);
 }
 
-async function plantAction(id, action) {
+function openPersonPicker(id, action) {
+  pendingAction = {id, action};
+  const labels = {water: 'Cine a udat?', fertilize_leaves: 'Cine a fertilizat frunzele?', fertilize_soil: 'Cine a fertilizat?'};
+  document.getElementById('pickerTitle').textContent = labels[action] || 'Cine?';
+  document.getElementById('personPicker').classList.add('active');
+  document.getElementById('pickerBackdrop').classList.add('active');
+}
+
+function closePersonPicker() {
+  document.getElementById('personPicker').classList.remove('active');
+  document.getElementById('pickerBackdrop').classList.remove('active');
+  pendingAction = null;
+}
+
+function selectPerson(person) {
+  if (!pendingAction) return;
+  const {id, action} = pendingAction;
+  closePersonPicker();
+  if (id.startsWith('__all__')) {
+    const loc = id.replace('__all__', '');
+    doWaterAll(loc, person);
+  } else {
+    doPlantAction(id, action, person);
+  }
+}
+
+async function doPlantAction(id, action, by) {
   try {
     const labels = {water: 'Udată', fertilize_leaves: 'Fertilizare frunze', fertilize_soil: 'Fertilizare pământ'};
-    showToast(`${labels[action]} — se salvează...`);
+    showToast(`${labels[action]} de ${PEOPLE_LABELS[by]} — se salvează...`);
     const today = new Date().toISOString().split('T')[0];
     const plant = plants.find(p => p.id === id);
     if (plant) {
-      if (action === 'water') plant.last_watered = today;
+      if (action === 'water') {
+        plant.last_watered = today;
+        if (!plant.watering_log) plant.watering_log = [];
+        plant.watering_log.push({date: today, by});
+      }
       else if (action === 'fertilize_leaves') plant.last_fertilized_leaves = today;
       else if (action === 'fertilize_soil') plant.last_fertilized = today;
-      renderPlants();
+      render(currentFilter);
     }
     const r = await fetch(WEBHOOK, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({id, action})
+      body: JSON.stringify({id, action, by})
     });
     if (r.ok) {
-      showToast(`${labels[action]} — salvat!`);
+      showToast(`${labels[action]} de ${PEOPLE_LABELS[by]} — salvat!`);
     } else {
       showToast('Eroare la salvare');
     }
   } catch(e) { showToast('Nu pot contacta serverul'); }
 }
 
+function plantAction(id, action) {
+  openPersonPicker(id, action);
+}
+
 async function waterAll(location) {
+  openPersonPicker('__all__' + (location || ''), 'water');
+}
+
+async function doWaterAll(location, by) {
   const toWater = plants.filter(p => !location || p.location === location);
   const today = new Date().toISOString().split('T')[0];
-  toWater.forEach(p => { p.last_watered = today; });
-  renderPlants();
+  toWater.forEach(p => {
+    p.last_watered = today;
+    if (!p.watering_log) p.watering_log = [];
+    p.watering_log.push({date: today, by});
+  });
+  render(currentFilter);
   showToast(`Se salvează ${toWater.length} plante...`);
   let count = 0;
   for (const p of toWater) {
@@ -382,13 +523,81 @@ async function waterAll(location) {
       const r = await fetch(WEBHOOK, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({id: p.id, action: 'water'})
+        body: JSON.stringify({id: p.id, action: 'water', by})
       });
       if (r.ok) count++;
       await new Promise(resolve => setTimeout(resolve, 2000));
     } catch(e) {}
   }
-  showToast(`Udate ${count} plante${location ? ' din ' + location : ''}`);
+  showToast(`Udate ${count} plante de ${PEOPLE_LABELS[by]}${location ? ' din ' + location : ''}`);
+}
+
+function getScores() {
+  const scores = {};
+  PEOPLE.forEach(p => { scores[p] = {total: 0, onTime: 0, streak: 0}; });
+  for (const plant of plants) {
+    const log = plant.watering_log || [];
+    const freq = plant.care.water.frequency_days;
+    let lastDate = null;
+    for (const entry of log) {
+      scores[entry.by].total++;
+      if (lastDate) {
+        const diff = Math.floor((new Date(entry.date) - new Date(lastDate)) / 86400000);
+        if (diff <= freq + 1) scores[entry.by].onTime++;
+      } else {
+        scores[entry.by].onTime++;
+      }
+      lastDate = entry.date;
+    }
+  }
+  // Calculate streaks per person
+  PEOPLE.forEach(person => {
+    let streak = 0;
+    const assignedPlants = plants.filter(p => p.assigned_to === person);
+    if (assignedPlants.length === 0) return;
+    const allLogs = [];
+    for (const plant of assignedPlants) {
+      for (const entry of (plant.watering_log || [])) {
+        if (entry.by === person) allLogs.push(entry.date);
+      }
+    }
+    const uniqueDays = [...new Set(allLogs)].sort().reverse();
+    const today = new Date().toISOString().split('T')[0];
+    for (let i = 0; i < uniqueDays.length; i++) {
+      if (i === 0 && uniqueDays[0] !== today) break;
+      if (i > 0) {
+        const diff = Math.floor((new Date(uniqueDays[i-1]) - new Date(uniqueDays[i])) / 86400000);
+        if (diff > 2) break;
+      }
+      streak++;
+    }
+    scores[person].streak = streak;
+  });
+  return scores;
+}
+
+function renderScoreboard() {
+  const scores = getScores();
+  const hasAnyData = PEOPLE.some(p => scores[p].total > 0);
+  if (!hasAnyData) {
+    document.getElementById('scoreboard').innerHTML = '';
+    return;
+  }
+  const sorted = [...PEOPLE].sort((a, b) => scores[b].onTime - scores[a].onTime);
+  let html = '<div class="scoreboard-card"><h3>Clasament Udare</h3><div class="scoreboard-grid">';
+  for (const person of sorted) {
+    const s = scores[person];
+    if (s.total === 0) continue;
+    const stars = Math.min(s.onTime, 99);
+    html += `<div class="score-item" data-person="${person}">
+      <div class="score-name">${PEOPLE_LABELS[person]}</div>
+      <div class="score-stars">${'⭐'.repeat(Math.min(stars, 5))}${stars > 5 ? '+' : ''}</div>
+      <div class="score-count">${stars} stele | ${s.total} udări</div>
+      ${s.streak > 1 ? `<div class="score-streak">🔥 ${s.streak} zile la rând!</div>` : ''}
+    </div>`;
+  }
+  html += '</div></div>';
+  document.getElementById('scoreboard').innerHTML = html;
 }
 
 async function loadPlants() {
@@ -485,6 +694,7 @@ function renderCalendar() {
 
 function render(filterLoc) {
   currentFilter = filterLoc || null;
+  renderScoreboard();
   const filtered = filterLoc ? plants.filter(p => p.location === filterLoc) : plants;
 
   document.getElementById('stats').innerHTML = `
