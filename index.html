@@ -623,6 +623,8 @@ function getScores() {
   return scores;
 }
 
+const LEI_PER_STAR = 3;
+
 function renderScoreboard() {
   const scores = getScores();
   const hasAnyData = PEOPLE.some(p => scores[p].total > 0);
@@ -632,15 +634,16 @@ function renderScoreboard() {
   }
   const sorted = [...PEOPLE].filter(p => scores[p].total > 0).sort((a, b) => scores[b].onTime - scores[a].onTime);
   let html = '<div class="scoreboard-card"><h3>Clasament Udare</h3><table style="width:100%;border-collapse:collapse;font-size:0.85em">';
-  html += '<tr style="border-bottom:1px solid var(--border);text-align:left"><th style="padding:6px 8px">#</th><th style="padding:6px 8px">Nume</th><th style="padding:6px 8px;text-align:center">⭐</th><th style="padding:6px 8px;text-align:center">Udări</th><th style="padding:6px 8px">Streak</th></tr>';
+  html += '<tr style="border-bottom:1px solid var(--border);text-align:left"><th style="padding:6px 8px">#</th><th style="padding:6px 8px">Nume</th><th style="padding:6px 8px;text-align:center">⭐</th><th style="padding:6px 8px;text-align:center">💰</th><th style="padding:6px 8px">Streak</th></tr>';
   sorted.forEach((person, i) => {
     const s = scores[person];
     const color = PEOPLE_COLORS[person];
+    const lei = s.onTime * LEI_PER_STAR;
     html += `<tr style="border-bottom:1px solid var(--border)">
       <td style="padding:6px 8px;font-weight:700;color:${color}">${i+1}</td>
       <td style="padding:6px 8px;font-weight:600">${PEOPLE_LABELS[person]}</td>
       <td style="padding:6px 8px;text-align:center;font-weight:700">${s.onTime}</td>
-      <td style="padding:6px 8px;text-align:center">${s.total}</td>
+      <td style="padding:6px 8px;text-align:center;font-weight:700;color:#2e7d32">${lei} lei</td>
       <td style="padding:6px 8px">${s.streak > 1 ? '🔥 ' + s.streak + 'z' : '—'}</td>
     </tr>`;
   });
