@@ -1,5 +1,32 @@
 [
   {
+    "id": "test-plant-delete-me",
+    "name": "🧪 TEST PLANT — Apasă Am Udat",
+    "species": "Testus deleticus",
+    "location": "Living",
+    "added": "2026-05-18",
+    "care": {
+      "water": {
+        "frequency_days": 1,
+        "notes": "Test plant — șterge după test"
+      },
+      "light": "N/A",
+      "fertilizer": {
+        "frequency_days": 99,
+        "season": "never",
+        "notes": "N/A"
+      },
+      "humidity": "N/A",
+      "temperature": "N/A",
+      "repot": "N/A",
+      "toxic": false,
+      "tips": "Aceasta e o plantă de test. Șterge-o după ce confirmi că Am Udat funcționează."
+    },
+    "last_watered": null,
+    "last_fertilized": null,
+    "watering_log": []
+  },
+  {
     "id": "monstera-mare-din-living",
     "name": "Monstera mare din Living",
     "species": "Monstera deliciosa",
