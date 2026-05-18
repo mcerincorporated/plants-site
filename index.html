@@ -512,11 +512,7 @@ async function undoLastAction() {
   hideUndoBar();
   showToast('Se anulează...');
   try {
-    await fetch(WEBHOOK, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: JSON.stringify({id, action: 'undo', by: 'system'})
-    });
+    navigator.sendBeacon(WEBHOOK, new Blob([JSON.stringify({id, action: 'undo', by: 'system'})], {type: 'application/json'}));
     showToast('Anulat!');
   } catch(e) { showToast('Eroare la anulare'); }
   lastAction = null;
@@ -576,11 +572,7 @@ async function doPlantAction(id, action, by) {
       render(currentFilter);
     }
     showToast(`${labels[action]} de ${PEOPLE_LABELS[by]}`);
-    await fetch(WEBHOOK, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: JSON.stringify({id, action, by, ts: new Date().toISOString(), ua: navigator.userAgent})
-    });
+    navigator.sendBeacon(WEBHOOK, new Blob([JSON.stringify({id, action, by, ts: new Date().toISOString(), ua: navigator.userAgent})], {type: 'application/json'}));
   } catch(e) { showToast('Nu pot contacta serverul'); }
 }
 
@@ -605,11 +597,7 @@ async function doWaterAll(location, by) {
   let count = 0;
   for (const p of toWater) {
     try {
-      await fetch(WEBHOOK, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: JSON.stringify({id: p.id, action: 'water', by})
-      });
+      navigator.sendBeacon(WEBHOOK, new Blob([JSON.stringify({id: p.id, action: 'water', by})], {type: 'application/json'}));
       count++;
       await new Promise(resolve => setTimeout(resolve, 2000));
     } catch(e) {}
