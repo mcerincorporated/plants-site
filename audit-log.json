@@ -16,5 +16,11 @@
     "plant": "verify",
     "action": "water",
     "by": "test"
+  },
+  {
+    "ts": "2026-05-18T16:06:01Z",
+    "plant": "sansevieria-din-living",
+    "action": "water",
+    "by": "cristi"
   }
 ]
