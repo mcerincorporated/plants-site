@@ -52,5 +52,11 @@
     "plant": "test-proxy",
     "action": "water",
     "by": "tudor"
+  },
+  {
+    "ts": "2026-05-18T16:40:33Z",
+    "plant": "final-test",
+    "action": "water",
+    "by": "tudor"
   }
 ]
