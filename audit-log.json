@@ -124,5 +124,11 @@
     "plant": "cactus-de-cr-ciun-din-camera-lui-tudi",
     "action": "water",
     "by": "tudor"
+  },
+  {
+    "ts": "2026-05-18T18:21:01Z",
+    "plant": "zz-plant-din-camera-lui-tudi,money-tree-din-camera-lui-tudi",
+    "action": "water_all",
+    "by": "tudor"
   }
 ]
