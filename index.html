@@ -513,7 +513,6 @@ async function undoLastAction() {
   try {
     const r = await fetch(WEBHOOK, {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({id, action: 'undo', by: 'system'})
     });
     if (r.ok) showToast('Anulat!');
@@ -578,7 +577,6 @@ async function doPlantAction(id, action, by) {
     showToast(`${labels[action]} de ${PEOPLE_LABELS[by]}`);
     const r = await fetch(WEBHOOK, {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({id, action, by, ts: new Date().toISOString(), ua: navigator.userAgent})
     });
     if (!r.ok) showToast('Eroare la salvare');
@@ -608,7 +606,6 @@ async function doWaterAll(location, by) {
     try {
       const r = await fetch(WEBHOOK, {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({id: p.id, action: 'water', by})
       });
       if (r.ok) count++;
@@ -793,7 +790,7 @@ function render(filterLoc) {
   document.getElementById('filters').innerHTML =
     `<button class="filter-btn ${!filterLoc ? 'active' : ''}" onclick="render()">Toate</button>` +
     locs.map(l => `<button class="filter-btn ${filterLoc===l?'active':''}" onclick="render('${l}')">${l}</button>`).join('') +
-    `<button class="action-btn btn-water" style="margin-left:auto;padding:6px 14px;font-size:0.85em" onclick="waterAll('${filterLoc||''}')">💧 Udă toate${filterLoc ? ' din '+filterLoc : ''}</button>`;
+    `<button class="action-btn btn-water" style="margin-left:auto;padding:6px 10px;font-size:0.75em;max-width:120px" onclick="waterAll('${filterLoc||''}')">💧 Udă toate</button>`;
 
   if (filtered.length === 0) {
     document.getElementById('grid').innerHTML = `
