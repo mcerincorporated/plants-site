@@ -481,18 +481,8 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 2500);
 }
 
-function showUndoBar() {
-  if (!lastAction) { hideUndoBar(); return; }
-  const plant = plants.find(p => p.id === lastAction.id);
-  const name = plant ? plant.name : lastAction.id;
-  const bar = document.getElementById('undoBar');
-  bar.innerHTML = `<span>Ultima: ${name} udată de ${PEOPLE_LABELS[lastAction.by]}</span><button class="undo-btn" onclick="undoLastAction()">↩ M-am răzgândit</button>`;
-  bar.classList.add('active');
-}
-
-function hideUndoBar() {
-  document.getElementById('undoBar').classList.remove('active');
-}
+function showUndoBar() {}
+function hideUndoBar() {}
 
 async function undoLastAction() {
   if (!lastAction) return;
