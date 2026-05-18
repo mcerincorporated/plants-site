@@ -502,7 +502,7 @@ async function undoLastAction() {
   hideUndoBar();
   showToast('Se anulează...');
   try {
-    sendToWebhook({id, action:'undo', by:'system'});
+    await sendToWebhook({id, action:'undo', by:'system'});
     showToast('Anulat!');
   } catch(e) { showToast('Eroare la anulare'); }
   lastAction = null;
@@ -562,7 +562,7 @@ async function doPlantAction(id, action, by) {
       render(currentFilter);
     }
     showToast(`${labels[action]} de ${PEOPLE_LABELS[by]}`);
-    sendToWebhook({id, action, by, ts: new Date().toISOString(), ua: navigator.userAgent});
+    await sendToWebhook({id, action, by, ts: new Date().toISOString(), ua: navigator.userAgent});
   } catch(e) {}
 }
 
