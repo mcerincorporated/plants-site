@@ -393,37 +393,38 @@ header p { opacity: 0.85; margin-top: 4px; font-size: 0.95em; }
   max-width: 1200px;
   margin: 0 auto;
   padding: 12px 20px;
-  display: flex;
-  justify-content: center;
 }
 .scoreboard-card {
   background: var(--card);
   border-radius: 12px;
-  padding: 16px;
+  padding: 14px 20px;
   box-shadow: var(--shadow);
 }
 .scoreboard-card h3 {
-  font-size: 0.9em;
+  font-size: 0.8em;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: var(--accent);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 .scoreboard-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 .score-item {
   text-align: center;
-  padding: 12px;
+  padding: 10px 16px;
   border-radius: 10px;
   background: var(--bg);
+  min-width: 100px;
 }
-.score-name { font-weight: 700; font-size: 0.9em; margin-bottom: 4px; }
-.score-stars { font-size: 1.3em; margin-bottom: 4px; }
-.score-count { font-size: 0.75em; color: var(--muted); }
-.score-streak { font-size: 0.8em; color: #e65100; font-weight: 600; }
+.score-name { font-weight: 700; font-size: 0.85em; margin-bottom: 2px; }
+.score-stars { font-size: 1.1em; margin-bottom: 2px; }
+.score-count { font-size: 0.7em; color: var(--muted); }
+.score-streak { font-size: 0.75em; color: #e65100; font-weight: 600; }
 .score-item[data-person="tudor"] { border-left: 3px solid #42a5f5; }
 .score-item[data-person="ilinca"] { border-left: 3px solid #ab47bc; }
 .score-item[data-person="manu"] { border-left: 3px solid #66bb6a; }
@@ -511,12 +512,12 @@ async function undoLastAction() {
   hideUndoBar();
   showToast('Se anulează...');
   try {
-    const r = await fetch(WEBHOOK, {
+    await fetch(WEBHOOK, {
       method: 'POST',
+      mode: 'no-cors',
       body: JSON.stringify({id, action: 'undo', by: 'system'})
     });
-    if (r.ok) showToast('Anulat!');
-    else showToast('Eroare la anulare');
+    showToast('Anulat!');
   } catch(e) { showToast('Eroare la anulare'); }
   lastAction = null;
 }
@@ -575,11 +576,11 @@ async function doPlantAction(id, action, by) {
       render(currentFilter);
     }
     showToast(`${labels[action]} de ${PEOPLE_LABELS[by]}`);
-    const r = await fetch(WEBHOOK, {
+    await fetch(WEBHOOK, {
       method: 'POST',
+      mode: 'no-cors',
       body: JSON.stringify({id, action, by, ts: new Date().toISOString(), ua: navigator.userAgent})
     });
-    if (!r.ok) showToast('Eroare la salvare');
   } catch(e) { showToast('Nu pot contacta serverul'); }
 }
 
@@ -604,11 +605,12 @@ async function doWaterAll(location, by) {
   let count = 0;
   for (const p of toWater) {
     try {
-      const r = await fetch(WEBHOOK, {
+      await fetch(WEBHOOK, {
         method: 'POST',
+        mode: 'no-cors',
         body: JSON.stringify({id: p.id, action: 'water', by})
       });
-      if (r.ok) count++;
+      count++;
       await new Promise(resolve => setTimeout(resolve, 2000));
     } catch(e) {}
   }
