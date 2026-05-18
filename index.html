@@ -539,25 +539,21 @@ function selectPerson(person) {
 }
 
 async function doPlantAction(id, action, by) {
-  try {
-    const labels = {water: 'Udată', fertilize_leaves: 'Fertilizare frunze', fertilize_soil: 'Fertilizare pământ'};
-    const today = new Date().toISOString().split('T')[0];
-    const plant = plants.find(p => p.id === id);
-    if (plant && action === 'water') {
+  const labels = {water: 'Udată', fertilize_leaves: 'Fertilizare frunze', fertilize_soil: 'Fertilizare pământ'};
+  const today = new Date().toISOString().split('T')[0];
+  const plant = plants.find(p => p.id === id);
+  showToast(`${labels[action]} de ${PEOPLE_LABELS[by]} — se trimite...`);
+  await sendToWebhook({id, action, by, ts: new Date().toISOString(), ua: navigator.userAgent});
+  if (plant) {
+    if (action === 'water') {
       lastAction = {id, by, prevWatered: plant.last_watered, prevLog: [...(plant.watering_log || [])]};
       plant.last_watered = today;
       if (!plant.watering_log) plant.watering_log = [];
       plant.watering_log.push({date: today, by});
-      render(currentFilter);
-      showUndoBar();
-    } else if (plant) {
-      if (action === 'fertilize_leaves') plant.last_fertilized_leaves = today;
-      else if (action === 'fertilize_soil') plant.last_fertilized = today;
-      render(currentFilter);
-    }
-    showToast(`${labels[action]} de ${PEOPLE_LABELS[by]}`);
-    await sendToWebhook({id, action, by, ts: new Date().toISOString(), ua: navigator.userAgent});
-  } catch(e) {}
+    } else if (action === 'fertilize_leaves') plant.last_fertilized_leaves = today;
+    else if (action === 'fertilize_soil') plant.last_fertilized = today;
+    render(currentFilter);
+  }
 }
 
 function plantAction(id, action) {
