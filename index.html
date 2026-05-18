@@ -566,6 +566,9 @@ async function waterAll(location) {
 
 async function doWaterAll(location, by) {
   const toWater = plants.filter(p => !location || p.location === location);
+  const ids = toWater.map(p => p.id);
+  showToast(`Se salvează ${toWater.length} plante...`);
+  await sendToWebhook({id: ids.join(','), action:'water_all', by, ts: new Date().toISOString()});
   const today = new Date().toISOString().split('T')[0];
   toWater.forEach(p => {
     p.last_watered = today;
@@ -573,16 +576,7 @@ async function doWaterAll(location, by) {
     p.watering_log.push({date: today, by});
   });
   render(currentFilter);
-  showToast(`Se salvează ${toWater.length} plante...`);
-  let count = 0;
-  for (const p of toWater) {
-    try {
-      await sendToWebhook({id: p.id, action:'water', by});
-      count++;
-      await new Promise(resolve => setTimeout(resolve, 2000));
-    } catch(e) {}
-  }
-  showToast(`Udate ${count} plante de ${PEOPLE_LABELS[by]}${location ? ' din ' + location : ''}`);
+  showToast(`Udate ${toWater.length} plante de ${PEOPLE_LABELS[by]}`);
 }
 
 function getScores() {
