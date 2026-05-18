@@ -94,5 +94,11 @@
     "plant": "verify-final",
     "action": "water",
     "by": "cristi"
+  },
+  {
+    "ts": "2026-05-18T17:58:04Z",
+    "plant": "test-plant-delete-me",
+    "action": "undo",
+    "by": "system"
   }
 ]
