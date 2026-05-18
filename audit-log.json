@@ -76,5 +76,11 @@
     "plant": "manual-verify",
     "action": "water",
     "by": "cristi"
+  },
+  {
+    "ts": "2026-05-18T17:35:35Z",
+    "plant": "test-plant-delete-me",
+    "action": "water",
+    "by": "cristi"
   }
 ]
