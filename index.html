@@ -405,7 +405,10 @@ header p { opacity: 0.85; margin-top: 4px; font-size: 0.95em; }
 <header style="position:relative">
   <h1>Plantele Noastre</h1>
   <p>Casa Marinescu</p>
-  <a href="calendar.html" style="position:absolute;top:20px;right:20px;color:#fff;text-decoration:none;font-size:0.9em;background:rgba(255,255,255,0.2);padding:6px 12px;border-radius:8px">📅 Calendar</a>
+  <div style="position:absolute;top:20px;right:20px;display:flex;gap:8px">
+    <a href="#" onclick="localStorage.removeItem('plants_person');showToast('Persoana resetată')" style="color:#fff;text-decoration:none;font-size:0.8em;background:rgba(255,255,255,0.15);padding:6px 10px;border-radius:8px">👤</a>
+    <a href="calendar.html" style="color:#fff;text-decoration:none;font-size:0.8em;background:rgba(255,255,255,0.2);padding:6px 10px;border-radius:8px">📅 Calendar</a>
+  </div>
 </header>
 
 <div class="stats" id="stats"></div>
@@ -445,6 +448,15 @@ function showToast(msg) {
 }
 
 function openPersonPicker(id, action) {
+  const saved = localStorage.getItem('plants_person');
+  if (saved && PEOPLE.includes(saved)) {
+    if (id.startsWith('__all__')) {
+      doWaterAll(id.replace('__all__', ''), saved);
+    } else {
+      doPlantAction(id, action, saved);
+    }
+    return;
+  }
   pendingAction = {id, action};
   const labels = {water: 'Cine a udat?', fertilize_leaves: 'Cine a fertilizat frunzele?', fertilize_soil: 'Cine a fertilizat?'};
   document.getElementById('pickerTitle').textContent = labels[action] || 'Cine?';
@@ -461,6 +473,7 @@ function closePersonPicker() {
 function selectPerson(person) {
   if (!pendingAction) return;
   const {id, action} = pendingAction;
+  localStorage.setItem('plants_person', person);
   closePersonPicker();
   if (id.startsWith('__all__')) {
     const loc = id.replace('__all__', '');
@@ -489,7 +502,7 @@ async function doPlantAction(id, action, by) {
     const r = await fetch(WEBHOOK, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({id, action, by})
+      body: JSON.stringify({id, action, by, ts: new Date().toISOString(), ua: navigator.userAgent})
     });
     if (r.ok) {
       showToast(`${labels[action]} de ${PEOPLE_LABELS[by]} — salvat!`);
