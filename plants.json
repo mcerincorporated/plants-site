@@ -761,9 +761,14 @@
       "toxic": false,
       "tips": "Taie florile ofilite pentru a stimula înflorirea. Frunzele catifelate nu se stropesc direct cu apă."
     },
-    "last_watered": null,
+    "last_watered": "2026-05-18",
     "last_fertilized": null,
-    "watering_log": []
+    "watering_log": [
+      {
+        "date": "2026-05-18",
+        "by": "tudor"
+      }
+    ]
   },
   {
     "id": "muscat-2-din-camera-lui-tudi",
