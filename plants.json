@@ -22,9 +22,14 @@
       "toxic": false,
       "tips": "Aceasta e o plantă de test. Șterge-o după ce confirmi că Am Udat funcționează."
     },
-    "last_watered": null,
+    "last_watered": "2026-05-18",
     "last_fertilized": null,
-    "watering_log": []
+    "watering_log": [
+      {
+        "date": "2026-05-18",
+        "by": "cristi"
+      }
+    ]
   },
   {
     "id": "monstera-mare-din-living",
