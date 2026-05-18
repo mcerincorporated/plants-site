@@ -58,5 +58,11 @@
     "plant": "final-test",
     "action": "water",
     "by": "tudor"
+  },
+  {
+    "ts": "2026-05-18T16:51:58Z",
+    "plant": "same-origin-test",
+    "action": "water",
+    "by": "cristi"
   }
 ]
