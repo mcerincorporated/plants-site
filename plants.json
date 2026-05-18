@@ -827,9 +827,14 @@
       "toxic": false,
       "tips": "Înflorește toamna/iarna. Pentru a induce înflorirea, expune la nopți mai lungi și temperaturi mai scăzute (15°C) timp de 6 săptămâni."
     },
-    "last_watered": null,
+    "last_watered": "2026-05-18",
     "last_fertilized": null,
-    "watering_log": []
+    "watering_log": [
+      {
+        "date": "2026-05-18",
+        "by": "tudor"
+      }
+    ]
   },
   {
     "id": "money-tree-din-camera-lui-tudi",
