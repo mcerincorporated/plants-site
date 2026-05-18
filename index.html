@@ -246,25 +246,7 @@ header p { opacity: 0.85; margin-top: 4px; font-size: 0.95em; }
   white-space: nowrap;
 }
 .undo-btn:active { transform: scale(0.95); }
-.undo-bar {
-  position: fixed;
-  bottom: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #fff3e0;
-  border: 1px solid #ffa726;
-  color: #e65100;
-  padding: 10px 16px;
-  border-radius: 10px;
-  font-size: 0.85em;
-  z-index: 199;
-  display: none;
-  align-items: center;
-  gap: 12px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-  max-width: 90vw;
-}
-.undo-bar.active { display: flex; }
+.undo-bar { display: none; }
 .calendar {
   max-width: 1200px;
   margin: 0 auto;
@@ -456,7 +438,6 @@ header p { opacity: 0.85; margin-top: 4px; font-size: 0.95em; }
 <div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
   <div class="modal" id="modalContent"></div>
 </div>
-<div class="undo-bar" id="undoBar"></div>
 <div class="toast" id="toast"></div>
 <div class="person-picker-backdrop" id="pickerBackdrop" onclick="closePersonPicker()"></div>
 <div class="person-picker" id="personPicker">
@@ -667,20 +648,21 @@ function renderScoreboard() {
     document.getElementById('scoreboard').innerHTML = '';
     return;
   }
-  const sorted = [...PEOPLE].sort((a, b) => scores[b].onTime - scores[a].onTime);
-  let html = '<div class="scoreboard-card"><h3>Clasament Udare</h3><div class="scoreboard-grid">';
-  for (const person of sorted) {
+  const sorted = [...PEOPLE].filter(p => scores[p].total > 0).sort((a, b) => scores[b].onTime - scores[a].onTime);
+  let html = '<div class="scoreboard-card"><h3>Clasament Udare</h3><table style="width:100%;border-collapse:collapse;font-size:0.85em">';
+  html += '<tr style="border-bottom:1px solid var(--border);text-align:left"><th style="padding:6px 8px">#</th><th style="padding:6px 8px">Nume</th><th style="padding:6px 8px;text-align:center">⭐</th><th style="padding:6px 8px;text-align:center">Udări</th><th style="padding:6px 8px">Streak</th></tr>';
+  sorted.forEach((person, i) => {
     const s = scores[person];
-    if (s.total === 0) continue;
-    const stars = Math.min(s.onTime, 99);
-    html += `<div class="score-item" data-person="${person}">
-      <div class="score-name">${PEOPLE_LABELS[person]}</div>
-      <div class="score-stars">${'⭐'.repeat(Math.min(stars, 5))}${stars > 5 ? '+' : ''}</div>
-      <div class="score-count">${stars} stele | ${s.total} udări</div>
-      ${s.streak > 1 ? `<div class="score-streak">🔥 ${s.streak} zile la rând!</div>` : ''}
-    </div>`;
-  }
-  html += '</div></div>';
+    const color = PEOPLE_COLORS[person];
+    html += `<tr style="border-bottom:1px solid var(--border)">
+      <td style="padding:6px 8px;font-weight:700;color:${color}">${i+1}</td>
+      <td style="padding:6px 8px;font-weight:600">${PEOPLE_LABELS[person]}</td>
+      <td style="padding:6px 8px;text-align:center;font-weight:700">${s.onTime}</td>
+      <td style="padding:6px 8px;text-align:center">${s.total}</td>
+      <td style="padding:6px 8px">${s.streak > 1 ? '🔥 ' + s.streak + 'z' : '—'}</td>
+    </tr>`;
+  });
+  html += '</table></div>';
   document.getElementById('scoreboard').innerHTML = html;
 }
 
@@ -819,7 +801,10 @@ function render(filterLoc) {
           <div class="care-item"><span class="care-icon">☀️</span><span class="care-value">${p.care.light.split(' ').slice(0,2).join(' ')}</span></div>
         </div>
         <div class="water-status ${ws.cls}">${ws.text}</div>
-        <button class="action-btn btn-water" style="width:100%;margin-top:8px" onclick="event.stopPropagation();plantAction('${p.id}','water')">💧 Am udat</button>
+        <div style="display:flex;gap:6px;margin-top:8px">
+          <button class="action-btn btn-water" style="flex:1" onclick="event.stopPropagation();plantAction('${p.id}','water')">💧 Am udat</button>
+          ${lastAction && lastAction.id === p.id ? '<button class="action-btn" style="background:#fff3e0;color:#e65100;flex:0 0 auto;padding:8px 12px" onclick="event.stopPropagation();undoLastAction()">↩</button>' : ''}
+        </div>
       </div>
     </div>`;
   }).join('');
