@@ -683,8 +683,14 @@
       "toxic": false,
       "tips": "Taie tulpinile uscate pentru a stimula înflorirea. Frunzele galbene pot indica exces de apă."
     },
-    "last_watered": null,
-    "last_fertilized": null
+    "last_watered": "2026-05-22",
+    "last_fertilized": null,
+    "watering_log": [
+      {
+        "date": "2026-05-22",
+        "by": "cristi"
+      }
+    ]
   },
   {
     "id": "lavand-de-la-buc-t-rie",
