@@ -190,5 +190,11 @@
     "plant": "sansevieria-din-living",
     "action": "water",
     "by": "manu"
+  },
+  {
+    "ts": "2026-05-22T04:11:15Z",
+    "plant": "alocasia-din-living",
+    "action": "water",
+    "by": "cristi"
   }
 ]
