@@ -83,8 +83,14 @@
       "toxic": false,
       "tips": "Gelul din frunze e util pentru arsuri minore. Nu uda în exces!"
     },
-    "last_watered": null,
-    "last_fertilized": null
+    "last_watered": "2026-05-22",
+    "last_fertilized": null,
+    "watering_log": [
+      {
+        "date": "2026-05-22",
+        "by": "manu"
+      }
+    ]
   },
   {
     "id": "crassula-din-living",
