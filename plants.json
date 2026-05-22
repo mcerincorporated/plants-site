@@ -50,8 +50,14 @@
       "toxic": true,
       "tips": "Ghiveci galben. Plantă tânără — frunzele vor dezvolta mai multe fenestrations cu timpul. Ține lângă cea mare pentru consistență vizuală 🌿"
     },
-    "last_watered": null,
-    "last_fertilized": null
+    "last_watered": "2026-05-22",
+    "last_fertilized": null,
+    "watering_log": [
+      {
+        "date": "2026-05-22",
+        "by": "manu"
+      }
+    ]
   },
   {
     "id": "aloe-din-living",
