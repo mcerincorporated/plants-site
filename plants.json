@@ -729,8 +729,14 @@
       "toxic": false,
       "tips": "Taie tulpinile după înflorire pentru a stimula noi flori. Ghiveciul violet îi stă de minune! 💜"
     },
-    "last_watered": null,
-    "last_fertilized": null
+    "last_watered": "2026-05-22",
+    "last_fertilized": null,
+    "watering_log": [
+      {
+        "date": "2026-05-22",
+        "by": "manu"
+      }
+    ]
   },
   {
     "id": "rozmarin-din-buc-t-rie",
