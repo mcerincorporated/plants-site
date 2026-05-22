@@ -23,15 +23,11 @@
       "toxic": true,
       "tips": "Șterge frunzele cu o cârpă umedă pentru a elimina praful. Suport/tutore pentru creștere verticală. Toxică pentru animale și copii mici!"
     },
-    "last_watered": "2026-05-22",
+    "last_watered": "2026-05-18",
     "last_fertilized": null,
     "watering_log": [
       {
-        "date": "2026-05-22",
-        "by": "manu"
-      },
-      {
-        "date": "2026-05-22",
+        "date": "2026-05-18",
         "by": "cristi"
       }
     ]
@@ -107,10 +103,6 @@
       {
         "date": "2026-05-22",
         "by": "manu"
-      },
-      {
-        "date": "2026-05-22",
-        "by": "tudor"
       }
     ]
   },
@@ -241,14 +233,9 @@
       "toxic": false,
       "tips": "Ciupește vârfurile regulat pentru a preveni înflorirea. Recoltează de sus în jos."
     },
-    "last_watered": "2026-05-22",
+    "last_watered": null,
     "last_fertilized": null,
-    "watering_log": [
-      {
-        "date": "2026-05-22",
-        "by": "tudor"
-      }
-    ]
+    "watering_log": null
   },
   {
     "id": "spathiphyllum-din-bucatarie",
