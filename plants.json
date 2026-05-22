@@ -233,9 +233,14 @@
       "toxic": false,
       "tips": "Ciupește vârfurile regulat pentru a preveni înflorirea. Recoltează de sus în jos."
     },
-    "last_watered": null,
+    "last_watered": "2026-05-21",
     "last_fertilized": null,
-    "watering_log": null
+    "watering_log": [
+      {
+        "date": "2026-05-21",
+        "by": "cristi"
+      }
+    ]
   },
   {
     "id": "spathiphyllum-din-bucatarie",
@@ -669,8 +674,14 @@
       "toxic": true,
       "tips": "Frunzele lucioase pot fi șterse cu o cârpă umedă. Ghiveci verde mint drăguț pe scări!"
     },
-    "last_watered": null,
-    "last_fertilized": null
+    "last_watered": "2026-05-21",
+    "last_fertilized": null,
+    "watering_log": [
+      {
+        "date": "2026-05-21",
+        "by": "cristi"
+      }
+    ]
   },
   {
     "id": "muscat-din-living",
