@@ -287,8 +287,14 @@
       "toxic": true,
       "tips": "Șterge frunzele de praf. Atenție - toxică pentru copii și animale! Fundiță verde decorativă la tulpină."
     },
-    "last_watered": null,
-    "last_fertilized": null
+    "last_watered": "2026-05-22",
+    "last_fertilized": null,
+    "watering_log": [
+      {
+        "date": "2026-05-22",
+        "by": "cristi"
+      }
+    ]
   },
   {
     "id": "pothos-din-bucatarie",
