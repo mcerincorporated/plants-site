@@ -542,8 +542,14 @@
       "toxic": true,
       "tips": "Tulpini lungi și arcuite = vrea mai multă lumină. Frunze galbene = prea multă apă. Rizomi groși stochează apă."
     },
-    "last_watered": null,
-    "last_fertilized": null
+    "last_watered": "2026-05-22",
+    "last_fertilized": null,
+    "watering_log": [
+      {
+        "date": "2026-05-22",
+        "by": "cristi"
+      }
+    ]
   },
   {
     "id": "dracaena-din-baia-de-sus",
