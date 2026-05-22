@@ -184,5 +184,11 @@
     "plant": "calathea-din-living",
     "action": "water",
     "by": "manu"
+  },
+  {
+    "ts": "2026-05-22T04:08:15Z",
+    "plant": "sansevieria-din-living",
+    "action": "water",
+    "by": "manu"
   }
 ]
