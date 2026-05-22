@@ -762,8 +762,14 @@
       "toxic": false,
       "tips": "Poți recolta ramuri pentru gătit! Tunde regulat pentru formă frumoasă. Are nevoie de drenaj bun."
     },
-    "last_watered": null,
-    "last_fertilized": null
+    "last_watered": "2026-05-22",
+    "last_fertilized": null,
+    "watering_log": [
+      {
+        "date": "2026-05-22",
+        "by": "manu"
+      }
+    ]
   },
   {
     "id": "zz-plant-din-camera-lui-tudi",
