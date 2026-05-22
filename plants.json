@@ -960,8 +960,14 @@
       "toxic": true,
       "tips": "Nu uda în rozetă — putrezește. Pete albe sunt normale, nu boală!"
     },
-    "last_watered": null,
-    "last_fertilized": null
+    "last_watered": "2026-05-16",
+    "last_fertilized": null,
+    "watering_log": [
+      {
+        "date": "2026-05-16",
+        "by": "cristi"
+      }
+    ]
   },
   {
     "id": "cactus-de-cr-ciun-din-secrets",
@@ -987,8 +993,14 @@
       "toxic": false,
       "tips": "Florile roz/magenta sunt spectaculoase! Petale căzute pe masă = normal în perioada înfloririi. Nu muta ghiveciul în timpul înfloririi."
     },
-    "last_watered": null,
-    "last_fertilized": null
+    "last_watered": "2026-05-16",
+    "last_fertilized": null,
+    "watering_log": [
+      {
+        "date": "2026-05-16",
+        "by": "cristi"
+      }
+    ]
   },
   {
     "id": "haworthia-din-secrets",
@@ -1014,7 +1026,13 @@
       "toxic": false,
       "tips": "Petele albe/verzui sunt normale. Ghiveci galben frumos! Nu exces de apă — principala cauză de moarte."
     },
-    "last_watered": null,
-    "last_fertilized": null
+    "last_watered": "2026-05-16",
+    "last_fertilized": null,
+    "watering_log": [
+      {
+        "date": "2026-05-16",
+        "by": "cristi"
+      }
+    ]
   }
 ]
