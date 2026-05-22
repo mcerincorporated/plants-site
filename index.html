@@ -457,7 +457,7 @@ header p { opacity: 0.85; margin-top: 4px; font-size: 0.95em; }
 let plants = [];
 let currentFilter = null;
 let pendingAction = null;
-const API = 'http://192.168.50.81:8080/api/plants';
+const API = location.hostname === '192.168.50.81' ? '/api/plants' : 'http://192.168.50.81:8080/api/plants';
 async function sendToWebhook(data) {
   try {
     const r = await fetch(API + '/action', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
