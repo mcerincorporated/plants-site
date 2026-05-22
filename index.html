@@ -457,11 +457,11 @@ header p { opacity: 0.85; margin-top: 4px; font-size: 0.95em; }
 let plants = [];
 let currentFilter = null;
 let pendingAction = null;
-const WEBHOOK = 'https://4mb8geyzjtyxdheozlbvfcamkw14oy3w.ui.nabu.casa/api/webhook/plants_action';
+const API = 'http://192.168.50.81:8080/api/plants';
 async function sendToWebhook(data) {
   try {
-    const r = await fetch(WEBHOOK, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
-    showToast(r.ok ? '✓ Salvat pe server!' : '✗ Server: ' + r.status);
+    const r = await fetch(API + '/action', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
+    showToast(r.ok ? '✓ Salvat!' : '✗ Server: ' + r.status);
     return r.ok;
   } catch(e) {
     showToast('✗ Eroare: ' + e.message);
@@ -654,10 +654,11 @@ function renderScoreboard() {
 
 async function loadPlants() {
   try {
-    const r = await fetch('plants.json?t=' + Date.now());
-    plants = await r.json();
+    const r = await fetch(API, {headers:{'Accept':'application/json'}});
+    if (r.ok) { plants = await r.json(); }
+    else { const r2 = await fetch('plants.json?t=' + Date.now()); plants = await r2.json(); }
   } catch(e) {
-    plants = [];
+    try { const r2 = await fetch('plants.json?t=' + Date.now()); plants = await r2.json(); } catch(e2) { plants = []; }
   }
   render(currentFilter);
 }
