@@ -154,5 +154,11 @@
     "plant": "crassula-din-living",
     "action": "water",
     "by": "manu"
+  },
+  {
+    "ts": "2026-05-22T04:07:46Z",
+    "plant": "monstera-mare-din-living",
+    "action": "water",
+    "by": "manu"
   }
 ]
