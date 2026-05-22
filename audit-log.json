@@ -178,5 +178,11 @@
     "plant": "crassula-din-living",
     "action": "water",
     "by": "manu"
+  },
+  {
+    "ts": "2026-05-22T04:08:08Z",
+    "plant": "calathea-din-living",
+    "action": "water",
+    "by": "manu"
   }
 ]
