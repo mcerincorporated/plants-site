@@ -200,8 +200,14 @@
       "toxic": true,
       "tips": "Foarte rezistentă. Purificare aer. Nu suprauda — putrezește ușor."
     },
-    "last_watered": null,
-    "last_fertilized": null
+    "last_watered": "2026-05-22",
+    "last_fertilized": null,
+    "watering_log": [
+      {
+        "date": "2026-05-22",
+        "by": "manu"
+      }
+    ]
   },
   {
     "id": "busuioc-din-bucatarie",
