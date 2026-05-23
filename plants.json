@@ -23,8 +23,14 @@
       "toxic": true,
       "tips": "Șterge frunzele cu o cârpă umedă pentru a elimina praful. Suport/tutore pentru creștere verticală. Toxică pentru animale și copii mici!"
     },
-    "last_watered": "2026-05-15",
-    "last_fertilized": null
+    "last_watered": "2026-05-23",
+    "last_fertilized": null,
+    "watering_log": [
+      {
+        "date": "2026-05-23",
+        "by": "manu"
+      }
+    ]
   },
   {
     "id": "monstera-mic-din-living",
@@ -542,14 +548,8 @@
       "toxic": true,
       "tips": "Lujerii lungi pot fi tăiați și înmulțiți în apă. Frunzele mai mari și mai pestrițe apar cu mai multă lumină."
     },
-    "last_watered": "2026-05-23",
-    "last_fertilized": null,
-    "watering_log": [
-      {
-        "date": "2026-05-23",
-        "by": "manu"
-      }
-    ]
+    "last_watered": "2026-05-16",
+    "last_fertilized": null
   },
   {
     "id": "pothos-din-camera-secretelor",
@@ -575,14 +575,8 @@
       "toxic": true,
       "tips": "Lujerii lungi pot fi tăiați și înmulțiți în apă. Arată spectaculos pe lângă bibliotecă!"
     },
-    "last_watered": "2026-05-23",
-    "last_fertilized": null,
-    "watering_log": [
-      {
-        "date": "2026-05-23",
-        "by": "ilinca"
-      }
-    ]
+    "last_watered": "2026-05-16",
+    "last_fertilized": null
   },
   {
     "id": "zz-plant-din-hol",
@@ -962,14 +956,8 @@
       "toxic": true,
       "tips": "Frunzele noi apar roșu-viu și devin verde-închis la maturitate. Șterge frunzele cu o cârpă umedă pentru a elimina praful."
     },
-    "last_watered": "2026-05-23",
-    "last_fertilized": null,
-    "watering_log": [
-      {
-        "date": "2026-05-23",
-        "by": "cristi"
-      }
-    ]
+    "last_watered": null,
+    "last_fertilized": null
   },
   {
     "id": "sansevieria-laurentii-din-bedroom",
@@ -995,13 +983,7 @@
       "toxic": true,
       "tips": "Una dintre cele mai rezistente plante. Purifică aerul. Toxic pentru câini și pisici dacă ingerat."
     },
-    "last_watered": "2026-05-23",
-    "last_fertilized": null,
-    "watering_log": [
-      {
-        "date": "2026-05-23",
-        "by": "cristi"
-      }
-    ]
+    "last_watered": null,
+    "last_fertilized": null
   }
 ]
