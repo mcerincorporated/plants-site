@@ -964,5 +964,32 @@
     },
     "last_watered": null,
     "last_fertilized": null
+  },
+  {
+    "id": "sansevieria-laurentii-din-bedroom",
+    "name": "Sansevieria Laurentii din Bedroom",
+    "species": "Sansevieria trifasciata 'Laurentii'",
+    "location": "Bedroom",
+    "photo": "photos/sansevieria-laurentii-din-bedroom.jpg",
+    "added": "2026-05-23",
+    "care": {
+      "water": {
+        "frequency_days": 21,
+        "notes": "Udare rară — lasă pământul complet uscat între udări. Iarna la 30-45 zile."
+      },
+      "light": "Tolerează lumină slabă dar preferă lumină indirectă medie. Evită soare direct puternic.",
+      "fertilizer": {
+        "frequency_days": 60,
+        "season": "primăvară-vară",
+        "notes": "Îngrășământ lichid diluat la jumătate, doar în sezonul de creștere."
+      },
+      "humidity": "Tolerează aer uscat — nu necesită umiditate specială.",
+      "temperature": "18-27°C, sensibilă la frig sub 10°C.",
+      "repot": "La 2-3 ani sau când rădăcinile ies din ghiveci.",
+      "toxic": true,
+      "tips": "Una dintre cele mai rezistente plante. Purifică aerul. Toxic pentru câini și pisici dacă ingerat."
+    },
+    "last_watered": null,
+    "last_fertilized": null
   }
 ]
