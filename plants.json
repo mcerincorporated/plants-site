@@ -995,7 +995,13 @@
       "toxic": true,
       "tips": "Una dintre cele mai rezistente plante. Purifică aerul. Toxic pentru câini și pisici dacă ingerat."
     },
-    "last_watered": null,
-    "last_fertilized": null
+    "last_watered": "2026-05-23",
+    "last_fertilized": null,
+    "watering_log": [
+      {
+        "date": "2026-05-23",
+        "by": "cristi"
+      }
+    ]
   }
 ]
