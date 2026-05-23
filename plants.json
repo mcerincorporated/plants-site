@@ -962,8 +962,14 @@
       "toxic": true,
       "tips": "Frunzele noi apar roșu-viu și devin verde-închis la maturitate. Șterge frunzele cu o cârpă umedă pentru a elimina praful."
     },
-    "last_watered": null,
-    "last_fertilized": null
+    "last_watered": "2026-05-23",
+    "last_fertilized": null,
+    "watering_log": [
+      {
+        "date": "2026-05-23",
+        "by": "cristi"
+      }
+    ]
   },
   {
     "id": "sansevieria-laurentii-din-bedroom",
