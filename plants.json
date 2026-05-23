@@ -575,8 +575,14 @@
       "toxic": true,
       "tips": "Lujerii lungi pot fi tăiați și înmulțiți în apă. Arată spectaculos pe lângă bibliotecă!"
     },
-    "last_watered": "2026-05-16",
-    "last_fertilized": null
+    "last_watered": "2026-05-23",
+    "last_fertilized": null,
+    "watering_log": [
+      {
+        "date": "2026-05-23",
+        "by": "ilinca"
+      }
+    ]
   },
   {
     "id": "zz-plant-din-hol",
