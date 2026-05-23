@@ -419,8 +419,14 @@
       "toxic": false,
       "tips": "Nu tăia tulpina florală până nu se usucă complet — poate reflori! Ghiveci cu sistem auto-udare roz."
     },
-    "last_watered": "2026-05-16",
-    "last_fertilized": null
+    "last_watered": "2026-05-23",
+    "last_fertilized": null,
+    "watering_log": [
+      {
+        "date": "2026-05-23",
+        "by": "cristi"
+      }
+    ]
   },
   {
     "id": "dracaena-din-dormitor",
