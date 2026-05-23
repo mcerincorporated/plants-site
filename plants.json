@@ -473,8 +473,14 @@
       "toxic": true,
       "tips": "Nu pune în soare direct. Frunzele galbene = prea multă lumină sau apă stagnantă."
     },
-    "last_watered": "2026-05-16",
-    "last_fertilized": null
+    "last_watered": "2026-05-23",
+    "last_fertilized": null,
+    "watering_log": [
+      {
+        "date": "2026-05-23",
+        "by": "manu"
+      }
+    ]
   },
   {
     "id": "zz-plant-din-living",
